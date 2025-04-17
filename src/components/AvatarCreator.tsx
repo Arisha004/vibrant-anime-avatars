@@ -11,37 +11,7 @@ import {
   Image, Camera, Share2 
 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
-
-// Mock avatar parts
-const hairStyles = [
-  { id: 'h1', name: 'Spiky', imageUrl: 'https://via.placeholder.com/60?text=Hair1' },
-  { id: 'h2', name: 'Long', imageUrl: 'https://via.placeholder.com/60?text=Hair2' },
-  { id: 'h3', name: 'Short', imageUrl: 'https://via.placeholder.com/60?text=Hair3' },
-  { id: 'h4', name: 'Curly', imageUrl: 'https://via.placeholder.com/60?text=Hair4' },
-];
-
-const eyeStyles = [
-  { id: 'e1', name: 'Round', imageUrl: 'https://via.placeholder.com/60?text=Eyes1' },
-  { id: 'e2', name: 'Sharp', imageUrl: 'https://via.placeholder.com/60?text=Eyes2' },
-  { id: 'e3', name: 'Cute', imageUrl: 'https://via.placeholder.com/60?text=Eyes3' },
-  { id: 'e4', name: 'Serious', imageUrl: 'https://via.placeholder.com/60?text=Eyes4' },
-];
-
-const mouthStyles = [
-  { id: 'm1', name: 'Smile', imageUrl: 'https://via.placeholder.com/60?text=Mouth1' },
-  { id: 'm2', name: 'Grin', imageUrl: 'https://via.placeholder.com/60?text=Mouth2' },
-  { id: 'm3', name: 'Neutral', imageUrl: 'https://via.placeholder.com/60?text=Mouth3' },
-  { id: 'm4', name: 'Surprised', imageUrl: 'https://via.placeholder.com/60?text=Mouth4' },
-];
-
-const skinTones = [
-  { id: 's1', color: '#FFDBAC' },
-  { id: 's2', color: '#F1C27D' },
-  { id: 's3', color: '#E0AC69' },
-  { id: 's4', color: '#C68642' },
-  { id: 's5', color: '#8D5524' },
-  { id: 's6', color: '#5E3413' },
-];
+import { hairStyles, eyeStyles, mouthStyles, skinTones, sampleAvatars } from '@/assets/avatarParts';
 
 const AvatarCreator = () => {
   const [name, setName] = useState('');
@@ -50,12 +20,17 @@ const AvatarCreator = () => {
   const [selectedMouth, setSelectedMouth] = useState(mouthStyles[0].id);
   const [selectedSkin, setSelectedSkin] = useState(skinTones[0].id);
   const [generating, setGenerating] = useState(false);
+  const [currentAvatar, setCurrentAvatar] = useState(sampleAvatars[0].imageUrl);
   
   const handleGenerate = () => {
     setGenerating(true);
     
     // Simulate generation delay
     setTimeout(() => {
+      // Pick a random avatar from samples for demo purposes
+      const randomAvatar = sampleAvatars[Math.floor(Math.random() * sampleAvatars.length)];
+      setCurrentAvatar(randomAvatar.imageUrl);
+      
       setGenerating(false);
       toast({
         title: "Avatar Generated!",
@@ -121,7 +96,7 @@ const AvatarCreator = () => {
                     className={`relative rounded-md overflow-hidden cursor-pointer transition-all ${selectedHair === hair.id ? 'ring-2 ring-primary/70 scale-105' : 'opacity-70 hover:opacity-100'}`}
                     onClick={() => setSelectedHair(hair.id)}
                   >
-                    <img src={hair.imageUrl} alt={hair.name} className="w-full aspect-square object-cover" />
+                    <img src={hair.imageUrl} alt={hair.name} className="w-full aspect-square object-cover bg-white" />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-xs font-medium">
                       {hair.name}
                     </div>
@@ -139,7 +114,7 @@ const AvatarCreator = () => {
                     className={`relative rounded-md overflow-hidden cursor-pointer transition-all ${selectedEyes === eye.id ? 'ring-2 ring-primary/70 scale-105' : 'opacity-70 hover:opacity-100'}`}
                     onClick={() => setSelectedEyes(eye.id)}
                   >
-                    <img src={eye.imageUrl} alt={eye.name} className="w-full aspect-square object-cover" />
+                    <img src={eye.imageUrl} alt={eye.name} className="w-full aspect-square object-cover bg-white" />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-xs font-medium">
                       {eye.name}
                     </div>
@@ -157,7 +132,7 @@ const AvatarCreator = () => {
                     className={`relative rounded-md overflow-hidden cursor-pointer transition-all ${selectedMouth === mouth.id ? 'ring-2 ring-primary/70 scale-105' : 'opacity-70 hover:opacity-100'}`}
                     onClick={() => setSelectedMouth(mouth.id)}
                   >
-                    <img src={mouth.imageUrl} alt={mouth.name} className="w-full aspect-square object-cover" />
+                    <img src={mouth.imageUrl} alt={mouth.name} className="w-full aspect-square object-cover bg-white" />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-xs font-medium">
                       {mouth.name}
                     </div>
@@ -177,6 +152,7 @@ const AvatarCreator = () => {
                     className={`h-10 w-10 rounded-full cursor-pointer transition-all ${selectedSkin === skin.id ? 'ring-2 ring-primary/70 scale-110' : 'hover:scale-105'}`}
                     style={{ backgroundColor: skin.color }}
                     onClick={() => setSelectedSkin(skin.id)}
+                    title={skin.name}
                   />
                 ))}
               </div>
@@ -226,7 +202,11 @@ const AvatarCreator = () => {
                     key={i}
                     className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
                   >
-                    <img src={`https://via.placeholder.com/60?text=Acc${i+1}`} alt={`Accessory ${i+1}`} className="w-full aspect-square object-cover" />
+                    <img 
+                      src={`https://i.imgur.com/Jy${String.fromCharCode(65 + i)}xPqD.png`} 
+                      alt={`Accessory ${i+1}`} 
+                      className="w-full aspect-square object-cover bg-white"
+                    />
                   </div>
                 ))}
               </div>
@@ -240,7 +220,11 @@ const AvatarCreator = () => {
                     key={i}
                     className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
                   >
-                    <img src={`https://via.placeholder.com/60?text=Eye${i+1}`} alt={`Eyewear ${i+1}`} className="w-full aspect-square object-cover" />
+                    <img 
+                      src={`https://i.imgur.com/L${String.fromCharCode(74 + i)}wQyn.png`} 
+                      alt={`Eyewear ${i+1}`} 
+                      className="w-full aspect-square object-cover bg-white"
+                    />
                   </div>
                 ))}
               </div>
@@ -254,7 +238,11 @@ const AvatarCreator = () => {
                     key={i}
                     className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
                   >
-                    <img src={`https://via.placeholder.com/60?text=S${i+1}`} alt={`Special ${i+1}`} className="w-full aspect-square object-cover" />
+                    <img 
+                      src={`https://i.imgur.com/K${String.fromCharCode(65 + i)}vQpx.png`}
+                      alt={`Special ${i+1}`} 
+                      className="w-full aspect-square object-cover bg-white"
+                    />
                   </div>
                 ))}
               </div>
@@ -265,12 +253,12 @@ const AvatarCreator = () => {
       
       <div className="flex flex-col">
         <div className="relative aspect-square bg-gradient-to-br from-anime-purple/30 to-anime-magenta/30 rounded-xl overflow-hidden flex items-center justify-center mb-4 shadow-lg">
-          {/* Placeholder for avatar preview */}
+          {/* Avatar preview */}
           <div className="h-56 w-56 rounded-full overflow-hidden border-4 border-white/70 bg-white flex items-center justify-center">
             <img 
-              src="https://via.placeholder.com/300?text=Avatar+Preview" 
+              src={currentAvatar} 
               alt="Avatar Preview"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
           
