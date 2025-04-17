@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,18 +11,18 @@ import AvatarCard from '@/components/AvatarCard';
 
 // Mock avatar data (combining both lists from Index page)
 const allAvatars = [
-  { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://via.placeholder.com/400?text=Cosmic+Samurai', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
-  { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://via.placeholder.com/400?text=Cyberpunk+Ninja', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
-  { id: 'a3', name: 'Ethereal Spirit', imageUrl: 'https://via.placeholder.com/400?text=Ethereal+Spirit', creator: 'StardustMage', likes: 163, views: 745, comments: 27 },
-  { id: 'a4', name: 'Crimson Fox', imageUrl: 'https://via.placeholder.com/400?text=Crimson+Fox', creator: 'SakuraDreams', likes: 217, views: 934, comments: 41 },
-  { id: 'a5', name: 'Galaxy Wanderer', imageUrl: 'https://via.placeholder.com/400?text=Galaxy+Wanderer', creator: 'CosmicMage', likes: 312, views: 1547, comments: 63 },
-  { id: 'a6', name: 'Neon Ronin', imageUrl: 'https://via.placeholder.com/400?text=Neon+Ronin', creator: 'TechnoSamurai', likes: 278, views: 1398, comments: 51 },
-  { id: 'a7', name: 'Azure Dragon', imageUrl: 'https://via.placeholder.com/400?text=Azure+Dragon', creator: 'OceanSpirit', likes: 256, views: 1124, comments: 46 },
-  { id: 'a8', name: 'Sakura Princess', imageUrl: 'https://via.placeholder.com/400?text=Sakura+Princess', creator: 'BlossomNinja', likes: 283, views: 1267, comments: 58 },
-  { id: 'a9', name: 'Phantom Blade', imageUrl: 'https://via.placeholder.com/400?text=Phantom+Blade', creator: 'ShadowMaster', likes: 198, views: 952, comments: 37 },
-  { id: 'a10', name: 'Lunar Wolf', imageUrl: 'https://via.placeholder.com/400?text=Lunar+Wolf', creator: 'MoonHowler', likes: 227, views: 1089, comments: 43 },
-  { id: 'a11', name: 'Electric Kitsune', imageUrl: 'https://via.placeholder.com/400?text=Electric+Kitsune', creator: 'ThunderFox', likes: 242, views: 1178, comments: 49 },
-  { id: 'a12', name: 'Jade Empress', imageUrl: 'https://via.placeholder.com/400?text=Jade+Empress', creator: 'EmeraldDragon', likes: 261, views: 1265, comments: 52 },
+  { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://i.imgur.com/jNGQMRQ.png', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
+  { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://i.imgur.com/L8Hzdcy.png', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
+  { id: 'a3', name: 'Ethereal Spirit', imageUrl: 'https://i.imgur.com/wFMJpAy.png', creator: 'StardustMage', likes: 163, views: 745, comments: 27 },
+  { id: 'a4', name: 'Crimson Fox', imageUrl: 'https://i.imgur.com/JpFc1KY.png', creator: 'SakuraDreams', likes: 217, views: 934, comments: 41 },
+  { id: 'a5', name: 'Galaxy Wanderer', imageUrl: 'https://i.imgur.com/2P3hWLz.png', creator: 'CosmicMage', likes: 312, views: 1547, comments: 63 },
+  { id: 'a6', name: 'Neon Ronin', imageUrl: 'https://i.imgur.com/VW4ktYR.png', creator: 'TechnoSamurai', likes: 278, views: 1398, comments: 51 },
+  { id: 'a7', name: 'Azure Dragon', imageUrl: 'https://i.imgur.com/MsHSJzt.png', creator: 'OceanSpirit', likes: 256, views: 1124, comments: 46 },
+  { id: 'a8', name: 'Sakura Princess', imageUrl: 'https://i.imgur.com/tbqGUZq.png', creator: 'BlossomNinja', likes: 283, views: 1267, comments: 58 },
+  { id: 'a9', name: 'Phantom Blade', imageUrl: 'https://i.imgur.com/eTQqwcT.png', creator: 'ShadowMaster', likes: 198, views: 952, comments: 37 },
+  { id: 'a10', name: 'Lunar Wolf', imageUrl: 'https://i.imgur.com/pQMZVCc.png', creator: 'MoonHowler', likes: 227, views: 1089, comments: 43 },
+  { id: 'a11', name: 'Electric Kitsune', imageUrl: 'https://i.imgur.com/J5XwJKK.png', creator: 'ThunderFox', likes: 242, views: 1178, comments: 49 },
+  { id: 'a12', name: 'Jade Empress', imageUrl: 'https://i.imgur.com/RvnMZEv.png', creator: 'EmeraldDragon', likes: 261, views: 1265, comments: 52 },
 ];
 
 const Explore = () => {
@@ -86,7 +85,7 @@ const Explore = () => {
       </div>
       
       {showFilters && (
-        <div className="glass-panel rounded-xl p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="glass-panel rounded-xl p-6 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white/80 backdrop-blur-sm">
           <div className="space-y-4">
             <h3 className="font-medium">Categories</h3>
             <div className="space-y-2">
@@ -129,7 +128,7 @@ const Explore = () => {
       )}
       
       <Tabs defaultValue="all" className="w-full">
-        <TabsList>
+        <TabsList className="bg-white/90 backdrop-blur-sm">
           <TabsTrigger value="all">All Avatars</TabsTrigger>
           <TabsTrigger value="featured">Featured</TabsTrigger>
           <TabsTrigger value="trending">Trending</TabsTrigger>

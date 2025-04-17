@@ -27,7 +27,6 @@ const AvatarCard = ({
   comments,
   className 
 }: AvatarCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
   const [likes, setLikes] = useState(initialLikes);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -55,26 +54,28 @@ const AvatarCard = ({
     <Link 
       to={`/avatar/${id}`}
       className={cn(
-        "avatar-card relative group overflow-hidden avatar-card-hover",
+        "avatar-card relative group overflow-hidden rounded-lg shadow-md transition-all duration-300",
         className
       )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative aspect-square overflow-hidden">
         <img 
           src={imageUrl} 
           alt={name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = `https://via.placeholder.com/400x400?text=${encodeURIComponent(name)}`;
+          }}
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
           <h3 className="font-medium text-white truncate">{name}</h3>
           <p className="text-xs text-white/80">by {creator}</p>
         </div>
       </div>
       
-      <div className="p-3 bg-white/80 backdrop-blur-sm">
+      <div className="p-3 bg-white/90 backdrop-blur-sm border-t border-gray-100">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Button 
@@ -102,10 +103,7 @@ const AvatarCard = ({
             </div>
           </div>
           
-          <div className={cn(
-            "h-2 w-2 rounded-full bg-accent transform transition-transform duration-300",
-            isHovered && "scale-125"
-          )} />
+          <div className="h-2 w-2 rounded-full bg-accent transform transition-transform duration-300 group-hover:scale-125" />
         </div>
       </div>
     </Link>
