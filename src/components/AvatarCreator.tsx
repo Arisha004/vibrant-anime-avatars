@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -21,22 +21,48 @@ const AvatarCreator = () => {
   const [selectedSkin, setSelectedSkin] = useState(skinTones[0].id);
   const [generating, setGenerating] = useState(false);
   const [currentAvatar, setCurrentAvatar] = useState(sampleAvatars[0].imageUrl);
+  const [hairColor, setHairColor] = useState(50);
+  const [eyeColor, setEyeColor] = useState(75);
+  const [backgroundType, setBackgroundType] = useState('gradient');
+  
+  // Get the selected items based on their IDs
+  const getSelectedHair = () => hairStyles.find(hair => hair.id === selectedHair) || hairStyles[0];
+  const getSelectedEyes = () => eyeStyles.find(eyes => eyes.id === selectedEyes) || eyeStyles[0];
+  const getSelectedMouth = () => mouthStyles.find(mouth => mouth.id === selectedMouth) || mouthStyles[0];
+  const getSelectedSkin = () => skinTones.find(skin => skin.id === selectedSkin) || skinTones[0];
+  
+  // Generate a more "dynamic" avatar based on selections
+  const generateAvatarUrl = () => {
+    // In a real app, we would combine the actual parts or call an API
+    // For now, we'll create a url with the selected options as parameters
+    const params = new URLSearchParams({
+      hair: getSelectedHair().name,
+      eyes: getSelectedEyes().name,
+      mouth: getSelectedMouth().name,
+      skin: getSelectedSkin().name,
+      hairColor: hairColor.toString(),
+      eyeColor: eyeColor.toString(),
+      background: backgroundType,
+      random: Math.random().toString() // To make the URL unique each time
+    });
+    
+    return `https://via.placeholder.com/400x400?text=${encodeURIComponent(name || 'My Avatar')}&${params.toString()}`;
+  };
   
   const handleGenerate = () => {
     setGenerating(true);
     
-    // Simulate generation delay
+    // Simulate API call or generation process
     setTimeout(() => {
-      // Pick a random avatar from samples for demo purposes
-      const randomAvatar = sampleAvatars[Math.floor(Math.random() * sampleAvatars.length)];
-      setCurrentAvatar(randomAvatar.imageUrl);
+      const generatedUrl = generateAvatarUrl();
+      setCurrentAvatar(generatedUrl);
       
       setGenerating(false);
       toast({
         title: "Avatar Generated!",
-        description: "Your custom avatar has been created successfully.",
+        description: name ? `${name} has been created successfully.` : "Your custom avatar has been created successfully.",
       });
-    }, 2000);
+    }, 1500);
   };
   
   const handleRandomize = () => {
@@ -44,14 +70,24 @@ const AvatarCreator = () => {
     setSelectedEyes(eyeStyles[Math.floor(Math.random() * eyeStyles.length)].id);
     setSelectedMouth(mouthStyles[Math.floor(Math.random() * mouthStyles.length)].id);
     setSelectedSkin(skinTones[Math.floor(Math.random() * skinTones.length)].id);
+    setHairColor(Math.floor(Math.random() * 100));
+    setEyeColor(Math.floor(Math.random() * 100));
     
     toast({
-      description: "Avatar randomized!",
+      description: "Avatar randomized! Click Generate to see the result.",
       duration: 1500,
     });
   };
   
   const handleDownload = () => {
+    // In a real app, this would use canvas or an API to download the actual image
+    const link = document.createElement('a');
+    link.href = currentAvatar;
+    link.download = `${name || 'anime-avatar'}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
     toast({
       title: "Avatar Downloaded",
       description: "Your avatar has been saved to your device.",
@@ -59,11 +95,21 @@ const AvatarCreator = () => {
   };
   
   const handleShare = () => {
+    // In a real app, this would generate a shareable link
+    navigator.clipboard.writeText(`Check out my anime avatar: ${currentAvatar}`);
+    
     toast({
       title: "Share Link Copied",
       description: "Share link has been copied to clipboard.",
     });
   };
+
+  // Generate avatar on component mount
+  useEffect(() => {
+    // Initial avatar generation
+    const initialAvatar = generateAvatarUrl();
+    setCurrentAvatar(initialAvatar);
+  }, []);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -159,22 +205,36 @@ const AvatarCreator = () => {
             </div>
             
             <div className="space-y-3">
-              <Label>Hair Color</Label>
+              <Label>Hair Color ({hairColor})</Label>
               <div className="h-10">
-                <Slider defaultValue={[50]} max={100} step={1} />
+                <Slider 
+                  value={[hairColor]} 
+                  max={100} 
+                  step={1} 
+                  onValueChange={(values) => setHairColor(values[0])}
+                />
               </div>
             </div>
             
             <div className="space-y-3">
-              <Label>Eye Color</Label>
+              <Label>Eye Color ({eyeColor})</Label>
               <div className="h-10">
-                <Slider defaultValue={[75]} max={100} step={1} />
+                <Slider 
+                  value={[eyeColor]} 
+                  max={100} 
+                  step={1}
+                  onValueChange={(values) => setEyeColor(values[0])}
+                />
               </div>
             </div>
             
             <div className="space-y-3">
               <Label>Background</Label>
-              <RadioGroup defaultValue="gradient" className="flex">
+              <RadioGroup 
+                value={backgroundType} 
+                onValueChange={setBackgroundType}
+                className="flex"
+              >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="gradient" id="gradient" />
                   <Label htmlFor="gradient">Gradient</Label>
@@ -203,7 +263,7 @@ const AvatarCreator = () => {
                     className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
                   >
                     <img 
-                      src={`https://i.imgur.com/Jy${String.fromCharCode(65 + i)}xPqD.png`} 
+                      src={`https://via.placeholder.com/200x200?text=Headwear+${i+1}`} 
                       alt={`Accessory ${i+1}`} 
                       className="w-full aspect-square object-cover bg-white"
                     />
@@ -221,7 +281,7 @@ const AvatarCreator = () => {
                     className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
                   >
                     <img 
-                      src={`https://i.imgur.com/L${String.fromCharCode(74 + i)}wQyn.png`} 
+                      src={`https://via.placeholder.com/200x200?text=Eyewear+${i+1}`} 
                       alt={`Eyewear ${i+1}`} 
                       className="w-full aspect-square object-cover bg-white"
                     />
@@ -239,7 +299,7 @@ const AvatarCreator = () => {
                     className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
                   >
                     <img 
-                      src={`https://i.imgur.com/K${String.fromCharCode(65 + i)}vQpx.png`}
+                      src={`https://via.placeholder.com/200x200?text=Special+${i+1}`}
                       alt={`Special ${i+1}`} 
                       className="w-full aspect-square object-cover bg-white"
                     />

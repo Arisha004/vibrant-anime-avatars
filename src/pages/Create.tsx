@@ -1,11 +1,42 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AvatarCreator from '@/components/AvatarCreator';
 import { Download, Share2, Heart } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 const Create = () => {
+  const [isSaved, setIsSaved] = useState(false);
+  
+  const handleDownload = () => {
+    toast({
+      title: "Avatar Downloaded",
+      description: "Your avatar has been saved to your device.",
+    });
+  };
+  
+  const handleShare = () => {
+    toast({
+      title: "Share Link Created",
+      description: "Your avatar sharing link has been copied to clipboard.",
+    });
+    
+    // In a real app, this would generate a shareable link
+    navigator.clipboard.writeText("https://your-anime-avatars.com/share/my-avatar");
+  };
+  
+  const handleSave = () => {
+    setIsSaved(!isSaved);
+    
+    toast({
+      title: isSaved ? "Avatar Removed" : "Avatar Saved",
+      description: isSaved 
+        ? "Avatar removed from your collection." 
+        : "Avatar saved to your collection.",
+    });
+  };
+  
   return (
     <div className="container py-8 space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -15,17 +46,22 @@ const Create = () => {
         </div>
         
         <div className="flex items-center gap-3">
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" onClick={handleDownload}>
             <Download className="h-4 w-4 mr-2" />
             Download
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" onClick={handleShare}>
             <Share2 className="h-4 w-4 mr-2" />
             Share
           </Button>
-          <Button variant="outline" size="sm">
-            <Heart className="h-4 w-4 mr-2" />
-            Save
+          <Button 
+            variant={isSaved ? "default" : "outline"} 
+            size="sm"
+            onClick={handleSave}
+            className={isSaved ? "bg-pink-500 hover:bg-pink-600" : ""}
+          >
+            <Heart className={`h-4 w-4 mr-2 ${isSaved ? "fill-white" : ""}`} />
+            {isSaved ? "Saved" : "Save"}
           </Button>
         </div>
       </div>

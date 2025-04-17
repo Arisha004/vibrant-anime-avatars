@@ -1,25 +1,24 @@
-
 // Hair Styles
 export const hairStyles = [
   {
     id: 'h1',
     name: 'Spiky',
-    imageUrl: 'https://i.imgur.com/JFoAhvW.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Spiky+Hair'
   },
   {
     id: 'h2',
     name: 'Long',
-    imageUrl: 'https://i.imgur.com/w0nkC4H.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Long+Hair'
   },
   {
     id: 'h3',
     name: 'Short',
-    imageUrl: 'https://i.imgur.com/m9Efrc4.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Short+Hair'
   },
   {
     id: 'h4',
     name: 'Curly',
-    imageUrl: 'https://i.imgur.com/aH5erPz.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Curly+Hair'
   },
 ];
 
@@ -28,22 +27,22 @@ export const eyeStyles = [
   {
     id: 'e1',
     name: 'Round',
-    imageUrl: 'https://i.imgur.com/xSiU7bm.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Round+Eyes'
   },
   {
     id: 'e2',
     name: 'Sharp',
-    imageUrl: 'https://i.imgur.com/PfVQKGP.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Sharp+Eyes'
   },
   {
     id: 'e3',
     name: 'Cute',
-    imageUrl: 'https://i.imgur.com/Dp0vb8p.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Cute+Eyes'
   },
   {
     id: 'e4',
     name: 'Serious',
-    imageUrl: 'https://i.imgur.com/oJSMJN4.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Serious+Eyes'
   },
 ];
 
@@ -52,22 +51,22 @@ export const mouthStyles = [
   {
     id: 'm1',
     name: 'Smile',
-    imageUrl: 'https://i.imgur.com/38MnLph.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Smile+Mouth'
   },
   {
     id: 'm2',
     name: 'Grin',
-    imageUrl: 'https://i.imgur.com/HWb8iw0.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Grin+Mouth'
   },
   {
     id: 'm3',
     name: 'Neutral',
-    imageUrl: 'https://i.imgur.com/tVYYHQx.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Neutral+Mouth'
   },
   {
     id: 'm4',
     name: 'Surprised',
-    imageUrl: 'https://i.imgur.com/1r41JLz.png'
+    imageUrl: 'https://via.placeholder.com/200x200?text=Surprised+Mouth'
   },
 ];
 
@@ -85,22 +84,22 @@ export const skinTones = [
 export const sampleAvatars = [
   {
     id: 'avatar1',
-    imageUrl: 'https://i.imgur.com/RXDRu1C.png',
+    imageUrl: 'https://via.placeholder.com/400x400?text=Cyber+Ninja',
     name: 'Cyber Ninja'
   },
   {
     id: 'avatar2',
-    imageUrl: 'https://i.imgur.com/dFpdfm3.png',
+    imageUrl: 'https://via.placeholder.com/400x400?text=Magical+Girl',
     name: 'Magical Girl'
   },
   {
     id: 'avatar3',
-    imageUrl: 'https://i.imgur.com/aJxPgKn.png',
+    imageUrl: 'https://via.placeholder.com/400x400?text=Academy+Student',
     name: 'Academy Student'
   },
   {
     id: 'avatar4',
-    imageUrl: 'https://i.imgur.com/XP9RVne.png',
+    imageUrl: 'https://via.placeholder.com/400x400?text=Battle+Mage',
     name: 'Battle Mage'
   }
 ];
