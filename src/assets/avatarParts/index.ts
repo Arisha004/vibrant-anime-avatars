@@ -1,4 +1,3 @@
-
 // Hair Styles
 export const hairStyles = [
   {
@@ -85,21 +84,31 @@ export const skinTones = [
 export const sampleAvatars = [
   {
     id: 'avatar1',
-    imageUrl: 'https://i.imgur.com/eEzuYhV.png',
-    name: 'Cyber Ninja'
+    name: 'Cyber Ninja',
+    imageUrl: 'https://via.placeholder.com/400x400?text=Cyber+Ninja',
+    creator: 'NeonKitsune',
+    likes: 245,
+    views: 1023,
+    comments: 48
   },
   {
     id: 'avatar2',
-    imageUrl: 'https://i.imgur.com/XcuZPYk.png',
-    name: 'Magical Girl'
+    name: 'Magical Girl',
+    imageUrl: 'https://via.placeholder.com/400x400?text=Magical+Girl',
+    creator: 'StarMage',
+    likes: 189,
+    views: 876,
+    comments: 32
   },
   {
     id: 'avatar3',
+    name: 'Academy Student',
     imageUrl: 'https://i.imgur.com/YwMKJYO.png',
     name: 'Academy Student'
   },
   {
     id: 'avatar4',
+    name: 'Battle Mage',
     imageUrl: 'https://i.imgur.com/BvQSQtE.png',
     name: 'Battle Mage'
   }

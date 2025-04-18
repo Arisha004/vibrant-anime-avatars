@@ -65,13 +65,13 @@ const AvatarCard = ({
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = `https://via.placeholder.com/400x400?text=${encodeURIComponent(name)}`;
+            target.src = 'https://via.placeholder.com/400x400?text=Anime+Avatar';
           }}
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-          <h3 className="font-medium text-white truncate">{name}</h3>
-          <p className="text-xs text-white/80">by {creator}</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h3 className="font-medium text-purple-100 group-hover:text-white truncate">{name}</h3>
+          <p className="text-xs text-purple-200 group-hover:text-white/80">by {creator}</p>
         </div>
       </div>
       
