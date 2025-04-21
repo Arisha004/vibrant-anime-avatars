@@ -1,384 +1,115 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Slider } from '@/components/ui/slider';
-import { 
-  ChevronRight, Download, RefreshCw, Sparkles, 
-  Image, Camera, Share2 
-} from 'lucide-react';
+import { hairStyles, eyeStyles, mouthStyles, skinTones } from '@/assets/avatarParts';
+import { useAvatarCreator } from '@/hooks/useAvatarCreator';
+import AvatarPartSelector from './AvatarPartSelector';
+import { Download, Share2, RefreshCw } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
-import { hairStyles, eyeStyles, mouthStyles, skinTones, sampleAvatars } from '@/assets/avatarParts';
 
 const AvatarCreator = () => {
-  const [name, setName] = useState('');
-  const [selectedHair, setSelectedHair] = useState(hairStyles[0].id);
-  const [selectedEyes, setSelectedEyes] = useState(eyeStyles[0].id);
-  const [selectedMouth, setSelectedMouth] = useState(mouthStyles[0].id);
-  const [selectedSkin, setSelectedSkin] = useState(skinTones[0].id);
-  const [generating, setGenerating] = useState(false);
-  const [currentAvatar, setCurrentAvatar] = useState(sampleAvatars[0].imageUrl);
-  const [hairColor, setHairColor] = useState(50);
-  const [eyeColor, setEyeColor] = useState(75);
-  const [backgroundType, setBackgroundType] = useState('gradient');
-  
-  // Get the selected items based on their IDs
-  const getSelectedHair = () => hairStyles.find(hair => hair.id === selectedHair) || hairStyles[0];
-  const getSelectedEyes = () => eyeStyles.find(eyes => eyes.id === selectedEyes) || eyeStyles[0];
-  const getSelectedMouth = () => mouthStyles.find(mouth => mouth.id === selectedMouth) || mouthStyles[0];
-  const getSelectedSkin = () => skinTones.find(skin => skin.id === selectedSkin) || skinTones[0];
-  
-  // Generate a more "dynamic" avatar based on selections
-  const generateAvatarUrl = () => {
-    // In a real app, we would combine the actual parts or call an API
-    // For now, we'll create a url with the selected options as parameters
-    const params = new URLSearchParams({
-      hair: getSelectedHair().name,
-      eyes: getSelectedEyes().name,
-      mouth: getSelectedMouth().name,
-      skin: getSelectedSkin().name,
-      hairColor: hairColor.toString(),
-      eyeColor: eyeColor.toString(),
-      background: backgroundType,
-      random: Math.random().toString() // To make the URL unique each time
-    });
-    
-    return `https://via.placeholder.com/400x400?text=${encodeURIComponent(name || 'My Avatar')}&${params.toString()}`;
-  };
-  
+  const {
+    selectedHair,
+    setSelectedHair,
+    selectedEyes,
+    setSelectedEyes,
+    selectedMouth,
+    setSelectedMouth,
+    selectedSkin,
+    setSelectedSkin,
+    avatarName,
+    setAvatarName,
+  } = useAvatarCreator();
+
   const handleGenerate = () => {
-    setGenerating(true);
-    
-    // Simulate API call or generation process
-    setTimeout(() => {
-      const generatedUrl = generateAvatarUrl();
-      setCurrentAvatar(generatedUrl);
-      
-      setGenerating(false);
-      toast({
-        title: "Avatar Generated!",
-        description: name ? `${name} has been created successfully.` : "Your custom avatar has been created successfully.",
-      });
-    }, 1500);
+    toast({
+      title: "Avatar Generated!",
+      description: "Your custom anime avatar has been created.",
+    });
   };
-  
+
   const handleRandomize = () => {
     setSelectedHair(hairStyles[Math.floor(Math.random() * hairStyles.length)].id);
     setSelectedEyes(eyeStyles[Math.floor(Math.random() * eyeStyles.length)].id);
     setSelectedMouth(mouthStyles[Math.floor(Math.random() * mouthStyles.length)].id);
     setSelectedSkin(skinTones[Math.floor(Math.random() * skinTones.length)].id);
-    setHairColor(Math.floor(Math.random() * 100));
-    setEyeColor(Math.floor(Math.random() * 100));
-    
-    toast({
-      description: "Avatar randomized! Click Generate to see the result.",
-      duration: 1500,
-    });
   };
-  
-  const handleDownload = () => {
-    // In a real app, this would use canvas or an API to download the actual image
-    const link = document.createElement('a');
-    link.href = currentAvatar;
-    link.download = `${name || 'anime-avatar'}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    
-    toast({
-      title: "Avatar Downloaded",
-      description: "Your avatar has been saved to your device.",
-    });
-  };
-  
-  const handleShare = () => {
-    // In a real app, this would generate a shareable link
-    navigator.clipboard.writeText(`Check out my anime avatar: ${currentAvatar}`);
-    
-    toast({
-      title: "Share Link Copied",
-      description: "Share link has been copied to clipboard.",
-    });
-  };
-
-  // Generate avatar on component mount
-  useEffect(() => {
-    // Initial avatar generation
-    const initialAvatar = generateAvatarUrl();
-    setCurrentAvatar(initialAvatar);
-  }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="space-y-6">
-        <div>
-          <Label htmlFor="avatar-name">Name your avatar</Label>
-          <Input 
-            id="avatar-name" 
-            placeholder="E.g., NeonKitsune" 
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="mt-1.5"
-          />
-        </div>
-        
-        <Tabs defaultValue="features" className="w-full">
-          <TabsList className="grid grid-cols-3 mb-4">
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="colors">Colors</TabsTrigger>
-            <TabsTrigger value="accessories">Accessories</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="features" className="space-y-6">
-            <div className="space-y-3">
-              <Label>Hair Style</Label>
-              <div className="grid grid-cols-4 gap-2">
-                {hairStyles.map((hair) => (
-                  <div 
-                    key={hair.id}
-                    className={`relative rounded-md overflow-hidden cursor-pointer transition-all ${selectedHair === hair.id ? 'ring-2 ring-primary/70 scale-105' : 'opacity-70 hover:opacity-100'}`}
-                    onClick={() => setSelectedHair(hair.id)}
-                  >
-                    <img src={hair.imageUrl} alt={hair.name} className="w-full aspect-square object-cover bg-white" />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-xs font-medium">
-                      {hair.name}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <Label>Eyes</Label>
-              <div className="grid grid-cols-4 gap-2">
-                {eyeStyles.map((eye) => (
-                  <div 
-                    key={eye.id}
-                    className={`relative rounded-md overflow-hidden cursor-pointer transition-all ${selectedEyes === eye.id ? 'ring-2 ring-primary/70 scale-105' : 'opacity-70 hover:opacity-100'}`}
-                    onClick={() => setSelectedEyes(eye.id)}
-                  >
-                    <img src={eye.imageUrl} alt={eye.name} className="w-full aspect-square object-cover bg-white" />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-xs font-medium">
-                      {eye.name}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <Label>Mouth</Label>
-              <div className="grid grid-cols-4 gap-2">
-                {mouthStyles.map((mouth) => (
-                  <div 
-                    key={mouth.id}
-                    className={`relative rounded-md overflow-hidden cursor-pointer transition-all ${selectedMouth === mouth.id ? 'ring-2 ring-primary/70 scale-105' : 'opacity-70 hover:opacity-100'}`}
-                    onClick={() => setSelectedMouth(mouth.id)}
-                  >
-                    <img src={mouth.imageUrl} alt={mouth.name} className="w-full aspect-square object-cover bg-white" />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-xs font-medium">
-                      {mouth.name}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="colors" className="space-y-6">
-            <div className="space-y-3">
-              <Label>Skin Tone</Label>
-              <div className="flex gap-2">
-                {skinTones.map((skin) => (
-                  <div 
-                    key={skin.id}
-                    className={`h-10 w-10 rounded-full cursor-pointer transition-all ${selectedSkin === skin.id ? 'ring-2 ring-primary/70 scale-110' : 'hover:scale-105'}`}
-                    style={{ backgroundColor: skin.color }}
-                    onClick={() => setSelectedSkin(skin.id)}
-                    title={skin.name}
-                  />
-                ))}
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <Label>Hair Color ({hairColor})</Label>
-              <div className="h-10">
-                <Slider 
-                  value={[hairColor]} 
-                  max={100} 
-                  step={1} 
-                  onValueChange={(values) => setHairColor(values[0])}
-                />
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <Label>Eye Color ({eyeColor})</Label>
-              <div className="h-10">
-                <Slider 
-                  value={[eyeColor]} 
-                  max={100} 
-                  step={1}
-                  onValueChange={(values) => setEyeColor(values[0])}
-                />
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <Label>Background</Label>
-              <RadioGroup 
-                value={backgroundType} 
-                onValueChange={setBackgroundType}
-                className="flex"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="gradient" id="gradient" />
-                  <Label htmlFor="gradient">Gradient</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="solid" id="solid" />
-                  <Label htmlFor="solid">Solid</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="transparent" id="transparent" />
-                  <Label htmlFor="transparent">Transparent</Label>
-                </div>
-              </RadioGroup>
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="accessories" className="space-y-6">
-            <p className="text-muted-foreground">Choose accessories to customize your avatar further.</p>
-            
-            <div className="space-y-3">
-              <Label>Headwear</Label>
-              <div className="grid grid-cols-4 gap-2">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <div 
-                    key={i}
-                    className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
-                  >
-                    <img 
-                      src={`https://via.placeholder.com/200x200?text=Headwear+${i+1}`} 
-                      alt={`Accessory ${i+1}`} 
-                      className="w-full aspect-square object-cover bg-white"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <Label>Eyewear</Label>
-              <div className="grid grid-cols-4 gap-2">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <div 
-                    key={i}
-                    className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
-                  >
-                    <img 
-                      src={`https://via.placeholder.com/200x200?text=Eyewear+${i+1}`} 
-                      alt={`Eyewear ${i+1}`} 
-                      className="w-full aspect-square object-cover bg-white"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              <Label>Special</Label>
-              <div className="grid grid-cols-4 gap-2">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <div 
-                    key={i}
-                    className="relative rounded-md overflow-hidden cursor-pointer opacity-70 hover:opacity-100"
-                  >
-                    <img 
-                      src={`https://via.placeholder.com/200x200?text=Special+${i+1}`}
-                      alt={`Special ${i+1}`} 
-                      className="w-full aspect-square object-cover bg-white"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </TabsContent>
-        </Tabs>
+    <div className="space-y-6">
+      <div>
+        <Input
+          placeholder="Name your avatar"
+          value={avatarName}
+          onChange={(e) => setAvatarName(e.target.value)}
+          className="max-w-md"
+        />
       </div>
-      
-      <div className="flex flex-col">
-        <div className="relative aspect-square bg-gradient-to-br from-anime-purple/30 to-anime-magenta/30 rounded-xl overflow-hidden flex items-center justify-center mb-4 shadow-lg">
-          {/* Avatar preview */}
-          <div className="h-56 w-56 rounded-full overflow-hidden border-4 border-white/70 bg-white flex items-center justify-center">
-            <img 
-              src={currentAvatar} 
-              alt="Avatar Preview"
-              className="w-full h-full object-contain"
-            />
-          </div>
+
+      <Tabs defaultValue="features" className="w-full">
+        <TabsList>
+          <TabsTrigger value="features">Features</TabsTrigger>
+          <TabsTrigger value="style">Style</TabsTrigger>
+          <TabsTrigger value="accessories">Accessories</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="features" className="space-y-6">
+          <AvatarPartSelector
+            label="Hair Style"
+            options={hairStyles}
+            selectedId={selectedHair}
+            onSelect={setSelectedHair}
+          />
           
-          {generating && (
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <div className="text-white flex flex-col items-center">
-                <RefreshCw className="h-10 w-10 animate-spin mb-2" />
-                <p>Generating your avatar...</p>
-              </div>
-            </div>
-          )}
-        </div>
-        
-        <div className="space-y-4 flex-1">
-          <div className="flex gap-3">
-            <Button className="w-full" onClick={handleRandomize}>
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Randomize
-            </Button>
-            <Button
-              className="w-full bg-gradient-to-r from-anime-purple to-anime-magenta hover:from-anime-purple/90 hover:to-anime-magenta/90 text-white"
-              onClick={handleGenerate}
-              disabled={generating}
-            >
-              {generating ? (
-                <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-              ) : (
-                <Sparkles className="h-4 w-4 mr-2" />
-              )}
-              Generate
-            </Button>
-          </div>
+          <AvatarPartSelector
+            label="Eyes"
+            options={eyeStyles}
+            selectedId={selectedEyes}
+            onSelect={setSelectedEyes}
+          />
           
-          <div className="flex gap-3">
-            <Button variant="outline" className="w-full" onClick={handleDownload}>
-              <Download className="h-4 w-4 mr-2" />
-              Download
-            </Button>
-            <Button variant="outline" className="w-full" onClick={handleShare}>
-              <Share2 className="h-4 w-4 mr-2" />
-              Share
-            </Button>
-          </div>
-          
-          <div className="mt-8 space-y-2">
-            <h3 className="font-semibold">Quick Actions</h3>
-            <div className="grid grid-cols-2 gap-2">
-              <Button variant="ghost" className="justify-start hover:bg-muted/50">
-                <Image className="h-4 w-4 mr-2" />
-                Upload Photo
-                <ChevronRight className="h-4 w-4 ml-auto" />
-              </Button>
-              <Button variant="ghost" className="justify-start hover:bg-muted/50">
-                <Camera className="h-4 w-4 mr-2" />
-                Take Photo
-                <ChevronRight className="h-4 w-4 ml-auto" />
-              </Button>
+          <AvatarPartSelector
+            label="Mouth"
+            options={mouthStyles}
+            selectedId={selectedMouth}
+            onSelect={setSelectedMouth}
+          />
+        </TabsContent>
+
+        <TabsContent value="style" className="space-y-6">
+          <div className="space-y-3">
+            <h3 className="font-semibold text-lg text-purple-700">Skin Tone</h3>
+            <div className="flex gap-4">
+              {skinTones.map((skin) => (
+                <button
+                  key={skin.id}
+                  onClick={() => setSelectedSkin(skin.id)}
+                  className={`w-12 h-12 rounded-full transition-transform ${
+                    selectedSkin === skin.id ? 'ring-2 ring-purple-500 scale-110' : ''
+                  }`}
+                  style={{ backgroundColor: skin.color }}
+                  title={skin.name}
+                />
+              ))}
             </div>
           </div>
-        </div>
+        </TabsContent>
+
+        <TabsContent value="accessories" className="space-y-6">
+          <p className="text-muted-foreground">Coming soon! More accessories will be available.</p>
+        </TabsContent>
+      </Tabs>
+
+      <div className="flex gap-4">
+        <Button variant="outline" onClick={handleRandomize}>
+          <RefreshCw className="w-4 h-4 mr-2" />
+          Randomize
+        </Button>
+        <Button onClick={handleGenerate}>
+          Generate Avatar
+        </Button>
       </div>
     </div>
   );
