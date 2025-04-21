@@ -3,27 +3,27 @@ export const hairStyles = [
   {
     id: 'h1',
     name: 'Spiky Anime',
-    imageUrl: 'https://i.imgur.com/JM11ely.png'
+    imageUrl: '/hair-spiky.png'
   },
   {
     id: 'h2',
     name: 'Long Flowing',
-    imageUrl: 'https://i.imgur.com/xg0YB9q.png'
+    imageUrl: '/hair-long.png'
   },
   {
     id: 'h3',
     name: 'Short Messy',
-    imageUrl: 'https://i.imgur.com/LBrAMxp.png'
+    imageUrl: '/hair-short.png'
   },
   {
     id: 'h4',
     name: 'Twin Tails',
-    imageUrl: 'https://i.imgur.com/CsoCkka.png'
+    imageUrl: '/hair-twin-tails.png'
   },
   {
     id: 'h5',
     name: 'Punk Style',
-    imageUrl: 'https://i.imgur.com/DXQPfL2.png'
+    imageUrl: '/hair-punk.png'
   }
 ];
 
@@ -32,27 +32,27 @@ export const eyeStyles = [
   {
     id: 'e1',
     name: 'Bright Round',
-    imageUrl: 'https://i.imgur.com/1Mm0Gux.png'
+    imageUrl: '/eyes-bright.png'
   },
   {
     id: 'e2',
     name: 'Sharp Cat',
-    imageUrl: 'https://i.imgur.com/LnknKqE.png'
+    imageUrl: '/eyes-cat.png'
   },
   {
     id: 'e3',
     name: 'Gentle',
-    imageUrl: 'https://i.imgur.com/3Jm9XCj.png'
+    imageUrl: '/eyes-gentle.png'
   },
   {
     id: 'e4',
     name: 'Determined',
-    imageUrl: 'https://i.imgur.com/HbcpJR6.png'
+    imageUrl: '/eyes-determined.png'
   },
   {
     id: 'e5',
     name: 'Mysterious',
-    imageUrl: 'https://i.imgur.com/cP9Vyck.png'
+    imageUrl: '/eyes-mysterious.png'
   }
 ];
 
@@ -61,27 +61,27 @@ export const mouthStyles = [
   {
     id: 'm1',
     name: 'Sweet Smile',
-    imageUrl: 'https://i.imgur.com/MRvryuD.png'
+    imageUrl: '/mouth-smile.png'
   },
   {
     id: 'm2',
     name: 'Confident',
-    imageUrl: 'https://i.imgur.com/ZdYWH1P.png'
+    imageUrl: '/mouth-confident.png'
   },
   {
     id: 'm3',
     name: 'Cheerful',
-    imageUrl: 'https://i.imgur.com/sxr1TjY.png'
+    imageUrl: '/mouth-cheerful.png'
   },
   {
     id: 'm4',
     name: 'Pouty',
-    imageUrl: 'https://i.imgur.com/G9uPE9C.png'
+    imageUrl: '/mouth-pouty.png'
   },
   {
     id: 'm5',
     name: 'Playful',
-    imageUrl: 'https://i.imgur.com/9sJH2dM.png'
+    imageUrl: '/mouth-playful.png'
   }
 ];
 

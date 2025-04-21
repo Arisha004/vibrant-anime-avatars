@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface AvatarPartOption {
   id: string;
@@ -36,17 +37,13 @@ const AvatarPartSelector = ({
                 : "border-transparent hover:border-purple-300"
             )}
           >
-            <div className="w-full h-full flex items-center justify-center bg-white">
-              <img
-                src={option.imageUrl}
-                alt={option.name}
-                className="max-w-full max-h-full object-contain p-1"
-                onError={(e) => {
-                  console.log(`Failed to load image: ${option.imageUrl}`);
-                  const target = e.target as HTMLImageElement;
-                  target.src = 'https://i.imgur.com/NZAMM2Z.png'; // Fallback image
-                }}
-              />
+            <div className="w-full h-full flex items-center justify-center bg-purple-50 p-2">
+              <Avatar className="w-full h-full">
+                <AvatarImage src={option.imageUrl} alt={option.name} />
+                <AvatarFallback className="bg-purple-100 text-purple-800 text-xs">
+                  {option.name.slice(0, 2)}
+                </AvatarFallback>
+              </Avatar>
             </div>
             <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 flex items-center justify-center transition-opacity">
               <span className="text-white text-sm font-medium bg-purple-600/80 px-2 py-1 rounded">{option.name}</span>
