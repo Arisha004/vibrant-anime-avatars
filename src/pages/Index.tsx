@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,19 +8,19 @@ import AvatarCreator from '@/components/AvatarCreator';
 import ChatRoom from '@/components/ChatRoom';
 import { ArrowRight, Sparkles, MessageCircle, PlusCircle } from 'lucide-react';
 
-// Mock avatar data
+// Mock avatar data (replace imageUrls with actual anime Unsplash face image links)
 const featuredAvatars = [
-  { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://via.placeholder.com/400?text=Cosmic+Samurai', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
-  { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://via.placeholder.com/400?text=Cyberpunk+Ninja', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
-  { id: 'a3', name: 'Ethereal Spirit', imageUrl: 'https://via.placeholder.com/400?text=Ethereal+Spirit', creator: 'StardustMage', likes: 163, views: 745, comments: 27 },
-  { id: 'a4', name: 'Crimson Fox', imageUrl: 'https://via.placeholder.com/400?text=Crimson+Fox', creator: 'SakuraDreams', likes: 217, views: 934, comments: 41 },
+  { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
+  { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
+  { id: 'a3', name: 'Ethereal Spirit', imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'StardustMage', likes: 163, views: 745, comments: 27 },
+  { id: 'a4', name: 'Crimson Fox', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'SakuraDreams', likes: 217, views: 934, comments: 41 },
 ];
 
 const trendingAvatars = [
-  { id: 'a5', name: 'Galaxy Wanderer', imageUrl: 'https://via.placeholder.com/400?text=Galaxy+Wanderer', creator: 'CosmicMage', likes: 312, views: 1547, comments: 63 },
-  { id: 'a6', name: 'Neon Ronin', imageUrl: 'https://via.placeholder.com/400?text=Neon+Ronin', creator: 'TechnoSamurai', likes: 278, views: 1398, comments: 51 },
-  { id: 'a7', name: 'Azure Dragon', imageUrl: 'https://via.placeholder.com/400?text=Azure+Dragon', creator: 'OceanSpirit', likes: 256, views: 1124, comments: 46 },
-  { id: 'a8', name: 'Sakura Princess', imageUrl: 'https://via.placeholder.com/400?text=Sakura+Princess', creator: 'BlossomNinja', likes: 283, views: 1267, comments: 58 },
+  { id: 'a5', name: 'Galaxy Wanderer', imageUrl: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'CosmicMage', likes: 312, views: 1547, comments: 63 },
+  { id: 'a6', name: 'Neon Ronin', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'TechnoSamurai', likes: 278, views: 1398, comments: 51 },
+  { id: 'a7', name: 'Azure Dragon', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'OceanSpirit', likes: 256, views: 1124, comments: 46 },
+  { id: 'a8', name: 'Sakura Princess', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'BlossomNinja', likes: 283, views: 1267, comments: 58 },
 ];
 
 const Index = () => {

@@ -9,20 +9,20 @@ import { Label } from '@/components/ui/label';
 import { Search, Filter, ArrowUpDown } from 'lucide-react';
 import AvatarCard from '@/components/AvatarCard';
 
-// Mock avatar data (combining both lists from Index page)
+// Mock avatar data with proper anime avatars
 const allAvatars = [
-  { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://i.imgur.com/jNGQMRQ.png', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
-  { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://i.imgur.com/L8Hzdcy.png', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
-  { id: 'a3', name: 'Ethereal Spirit', imageUrl: 'https://i.imgur.com/wFMJpAy.png', creator: 'StardustMage', likes: 163, views: 745, comments: 27 },
-  { id: 'a4', name: 'Crimson Fox', imageUrl: 'https://i.imgur.com/JpFc1KY.png', creator: 'SakuraDreams', likes: 217, views: 934, comments: 41 },
-  { id: 'a5', name: 'Galaxy Wanderer', imageUrl: 'https://i.imgur.com/2P3hWLz.png', creator: 'CosmicMage', likes: 312, views: 1547, comments: 63 },
-  { id: 'a6', name: 'Neon Ronin', imageUrl: 'https://i.imgur.com/VW4ktYR.png', creator: 'TechnoSamurai', likes: 278, views: 1398, comments: 51 },
-  { id: 'a7', name: 'Azure Dragon', imageUrl: 'https://i.imgur.com/MsHSJzt.png', creator: 'OceanSpirit', likes: 256, views: 1124, comments: 46 },
-  { id: 'a8', name: 'Sakura Princess', imageUrl: 'https://i.imgur.com/tbqGUZq.png', creator: 'BlossomNinja', likes: 283, views: 1267, comments: 58 },
-  { id: 'a9', name: 'Phantom Blade', imageUrl: 'https://i.imgur.com/eTQqwcT.png', creator: 'ShadowMaster', likes: 198, views: 952, comments: 37 },
-  { id: 'a10', name: 'Lunar Wolf', imageUrl: 'https://i.imgur.com/pQMZVCc.png', creator: 'MoonHowler', likes: 227, views: 1089, comments: 43 },
-  { id: 'a11', name: 'Electric Kitsune', imageUrl: 'https://i.imgur.com/J5XwJKK.png', creator: 'ThunderFox', likes: 242, views: 1178, comments: 49 },
-  { id: 'a12', name: 'Jade Empress', imageUrl: 'https://i.imgur.com/RvnMZEv.png', creator: 'EmeraldDragon', likes: 261, views: 1265, comments: 52 },
+  { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
+  { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
+  { id: 'a3', name: 'Ethereal Spirit', imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'StardustMage', likes: 163, views: 745, comments: 27 },
+  { id: 'a4', name: 'Crimson Fox', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'SakuraDreams', likes: 217, views: 934, comments: 41 },
+  { id: 'a5', name: 'Galaxy Wanderer', imageUrl: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'CosmicMage', likes: 312, views: 1547, comments: 63 },
+  { id: 'a6', name: 'Neon Ronin', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'TechnoSamurai', likes: 278, views: 1398, comments: 51 },
+  { id: 'a7', name: 'Azure Dragon', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'OceanSpirit', likes: 256, views: 1124, comments: 46 },
+  { id: 'a8', name: 'Sakura Princess', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'BlossomNinja', likes: 283, views: 1267, comments: 58 },
+  { id: 'a9', name: 'Phantom Blade', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'ShadowMaster', likes: 198, views: 952, comments: 37 },
+  { id: 'a10', name: 'Lunar Wolf', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'MoonHowler', likes: 227, views: 1089, comments: 43 },
+  { id: 'a11', name: 'Electric Kitsune', imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'ThunderFox', likes: 242, views: 1178, comments: 49 },
+  { id: 'a12', name: 'Jade Empress', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'EmeraldDragon', likes: 261, views: 1265, comments: 52 },
 ];
 
 const Explore = () => {
@@ -129,10 +129,10 @@ const Explore = () => {
       
       <Tabs defaultValue="all" className="w-full">
         <TabsList className="bg-white/90 backdrop-blur-sm">
-          <TabsTrigger value="all">All Avatars</TabsTrigger>
-          <TabsTrigger value="featured">Featured</TabsTrigger>
-          <TabsTrigger value="trending">Trending</TabsTrigger>
-          <TabsTrigger value="new">New</TabsTrigger>
+          <TabsTrigger value="all" className="text-anime-purple data-[state=active]:!text-anime-purple data-[state=inactive]:!text-anime-purple hover:!text-anime-purple">All Avatars</TabsTrigger>
+          <TabsTrigger value="featured" className="text-anime-purple data-[state=active]:!text-anime-purple data-[state=inactive]:!text-anime-purple hover:!text-anime-purple">Featured</TabsTrigger>
+          <TabsTrigger value="trending" className="text-anime-purple data-[state=active]:!text-anime-purple data-[state=inactive]:!text-anime-purple hover:!text-anime-purple">Trending</TabsTrigger>
+          <TabsTrigger value="new" className="text-anime-purple data-[state=active]:!text-anime-purple data-[state=inactive]:!text-anime-purple hover:!text-anime-purple">New</TabsTrigger>
         </TabsList>
         
         <TabsContent value="all" className="pt-6">

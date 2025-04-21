@@ -1,3 +1,4 @@
+
 // Hair Styles
 export const hairStyles = [
   {
@@ -85,7 +86,7 @@ export const sampleAvatars = [
   {
     id: 'avatar1',
     name: 'Cyber Ninja',
-    imageUrl: 'https://via.placeholder.com/400x400?text=Cyber+Ninja',
+    imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80',
     creator: 'NeonKitsune',
     likes: 245,
     views: 1023,
@@ -94,7 +95,7 @@ export const sampleAvatars = [
   {
     id: 'avatar2',
     name: 'Magical Girl',
-    imageUrl: 'https://via.placeholder.com/400x400?text=Magical+Girl',
+    imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80',
     creator: 'StarMage',
     likes: 189,
     views: 876,
@@ -103,13 +104,20 @@ export const sampleAvatars = [
   {
     id: 'avatar3',
     name: 'Academy Student',
-    imageUrl: 'https://i.imgur.com/YwMKJYO.png',
-    name: 'Academy Student'
+    imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80',
+    creator: 'StudentArtist',
+    likes: 101,
+    views: 542,
+    comments: 13
   },
   {
     id: 'avatar4',
     name: 'Battle Mage',
-    imageUrl: 'https://i.imgur.com/BvQSQtE.png',
-    name: 'Battle Mage'
+    imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80',
+    creator: 'MageMaster',
+    likes: 88,
+    views: 413,
+    comments: 7
   }
 ];
+
