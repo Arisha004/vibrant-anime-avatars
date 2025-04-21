@@ -36,17 +36,20 @@ const AvatarPartSelector = ({
                 : "border-transparent hover:border-purple-300"
             )}
           >
-            <img
-              src={option.imageUrl}
-              alt={option.name}
-              className="w-full h-full object-contain bg-gray-50"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = 'https://i.imgur.com/NZAMM2Z.png'; // Fallback image
-              }}
-            />
-            <div className="absolute inset-0 bg-black/40 hover:bg-black/20 flex items-center justify-center">
-              <span className="text-white text-sm font-medium">{option.name}</span>
+            <div className="w-full h-full flex items-center justify-center bg-white">
+              <img
+                src={option.imageUrl}
+                alt={option.name}
+                className="max-w-full max-h-full object-contain p-1"
+                onError={(e) => {
+                  console.log(`Failed to load image: ${option.imageUrl}`);
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://i.imgur.com/NZAMM2Z.png'; // Fallback image
+                }}
+              />
+            </div>
+            <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 flex items-center justify-center transition-opacity">
+              <span className="text-white text-sm font-medium bg-purple-600/80 px-2 py-1 rounded">{option.name}</span>
             </div>
           </button>
         ))}
