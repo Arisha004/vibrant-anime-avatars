@@ -39,9 +39,13 @@ const AvatarPartSelector = ({
             <img
               src={option.imageUrl}
               alt={option.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain bg-gray-50"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = 'https://i.imgur.com/NZAMM2Z.png'; // Fallback image
+              }}
             />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/40 hover:bg-black/20 flex items-center justify-center">
               <span className="text-white text-sm font-medium">{option.name}</span>
             </div>
           </button>
