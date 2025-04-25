@@ -11,78 +11,78 @@ import { ArrowRight, Sparkles, MessageCircle, PlusCircle } from 'lucide-react';
 const featuredAvatars = [
   { 
     id: 'a1', 
-    name: 'Cyber Neko', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-1.png', 
-    creator: 'NeonKitsune', 
-    likes: 245, 
-    views: 1023, 
-    comments: 48 
+    name: 'Crystal Angel', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/crystal-1.png', 
+    creator: 'ArtisticDreams', 
+    likes: 845, 
+    views: 3023, 
+    comments: 148 
   },
   { 
     id: 'a2', 
-    name: 'Spirit Guardian', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-2.png', 
-    creator: 'PurpleSamurai', 
-    likes: 189, 
-    views: 876, 
-    comments: 32 
+    name: 'Sakura Spirit', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/sakura-1.png', 
+    creator: 'AnimeArtist', 
+    likes: 789, 
+    views: 2876, 
+    comments: 132 
   },
   { 
     id: 'a3', 
-    name: 'Moon Princess', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-3.png', 
-    creator: 'StardustMage', 
-    likes: 163, 
-    views: 745, 
-    comments: 27 
+    name: 'Azure Princess', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/azure-1.png', 
+    creator: 'DigitalMuse', 
+    likes: 763, 
+    views: 2445, 
+    comments: 127 
   },
   { 
     id: 'a4', 
-    name: 'Tech Samurai', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-4.png', 
+    name: 'Neon Priestess', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/neon-1.png', 
     creator: 'CyberArtist', 
-    likes: 217, 
-    views: 934, 
-    comments: 41 
+    likes: 917, 
+    views: 3934, 
+    comments: 241 
   },
 ];
 
 const trendingAvatars = [
   { 
     id: 'a5', 
-    name: 'Crystal Mage', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-5.png', 
-    creator: 'CosmicMage', 
-    likes: 312, 
-    views: 1547, 
-    comments: 63 
+    name: 'Snow Queen', 
+    imageUrl: '/lovable-uploads/044f1f61-4521-4743-b2ba-2d1257fe3b18.png', 
+    creator: 'WinterDreams', 
+    likes: 1312, 
+    views: 5547, 
+    comments: 263 
   },
   { 
     id: 'a6', 
-    name: 'Neon Hunter', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-6.png', 
-    creator: 'TechnoSamurai', 
-    likes: 278, 
-    views: 1398, 
-    comments: 51 
+    name: 'Cherry Blossom', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/cherry-1.png', 
+    creator: 'SakuraArt', 
+    likes: 1178, 
+    views: 4398, 
+    comments: 251 
   },
   { 
     id: 'a7', 
-    name: 'Sky Ninja', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-7.png', 
-    creator: 'CloudMaster', 
-    likes: 256, 
-    views: 1124, 
-    comments: 46 
+    name: 'Starlight Mage', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/star-1.png', 
+    creator: 'GalacticDreams', 
+    likes: 1056, 
+    views: 4124, 
+    comments: 246 
   },
   { 
     id: 'a8', 
-    name: 'Dragon Rider', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-8.png', 
-    creator: 'DragonLord', 
-    likes: 283, 
-    views: 1267, 
-    comments: 58 
+    name: 'Moon Guardian', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/moon-1.png', 
+    creator: 'LunarArtist', 
+    likes: 983, 
+    views: 3267, 
+    comments: 158 
   },
 ];
 

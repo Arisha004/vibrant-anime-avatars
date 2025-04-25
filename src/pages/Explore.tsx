@@ -9,20 +9,19 @@ import { Label } from '@/components/ui/label';
 import { Search, Filter, ArrowUpDown } from 'lucide-react';
 import AvatarCard from '@/components/AvatarCard';
 
-// Mock avatar data with proper anime avatars
 const allAvatars = [
-  { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
-  { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
-  { id: 'a3', name: 'Ethereal Spirit', imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'StardustMage', likes: 163, views: 745, comments: 27 },
-  { id: 'a4', name: 'Crimson Fox', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'SakuraDreams', likes: 217, views: 934, comments: 41 },
-  { id: 'a5', name: 'Galaxy Wanderer', imageUrl: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'CosmicMage', likes: 312, views: 1547, comments: 63 },
-  { id: 'a6', name: 'Neon Ronin', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'TechnoSamurai', likes: 278, views: 1398, comments: 51 },
-  { id: 'a7', name: 'Azure Dragon', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'OceanSpirit', likes: 256, views: 1124, comments: 46 },
-  { id: 'a8', name: 'Sakura Princess', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'BlossomNinja', likes: 283, views: 1267, comments: 58 },
-  { id: 'a9', name: 'Phantom Blade', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'ShadowMaster', likes: 198, views: 952, comments: 37 },
-  { id: 'a10', name: 'Lunar Wolf', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'MoonHowler', likes: 227, views: 1089, comments: 43 },
-  { id: 'a11', name: 'Electric Kitsune', imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'ThunderFox', likes: 242, views: 1178, comments: 49 },
-  { id: 'a12', name: 'Jade Empress', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'EmeraldDragon', likes: 261, views: 1265, comments: 52 },
+  { id: 'a1', name: 'Crystal Angel', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/crystal-1.png', creator: 'ArtisticDreams', likes: 845, views: 3023, comments: 148 },
+  { id: 'a2', name: 'Sakura Spirit', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/sakura-1.png', creator: 'AnimeArtist', likes: 789, views: 2876, comments: 132 },
+  { id: 'a3', name: 'Azure Princess', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/azure-1.png', creator: 'DigitalMuse', likes: 763, views: 2445, comments: 127 },
+  { id: 'a4', name: 'Neon Priestess', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/neon-1.png', creator: 'CyberArtist', likes: 917, views: 3934, comments: 241 },
+  { id: 'a5', name: 'Snow Queen', imageUrl: '/lovable-uploads/044f1f61-4521-4743-b2ba-2d1257fe3b18.png', creator: 'WinterDreams', likes: 1312, views: 5547, comments: 263 },
+  { id: 'a6', name: 'Cherry Blossom', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/cherry-1.png', creator: 'SakuraArt', likes: 1178, views: 4398, comments: 251 },
+  { id: 'a7', name: 'Starlight Mage', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/star-1.png', creator: 'GalacticDreams', likes: 1056, views: 4124, comments: 246 },
+  { id: 'a8', name: 'Moon Guardian', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/moon-1.png', creator: 'LunarArtist', likes: 983, views: 3267, comments: 158 },
+  { id: 'a9', name: 'Celestial Maiden', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/celestial-1.png', creator: 'StardustArt', likes: 892, views: 2952, comments: 137 },
+  { id: 'a10', name: 'Solar Knight', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/solar-1.png', creator: 'SunlightStudio', likes: 927, views: 3089, comments: 143 },
+  { id: 'a11', name: 'Aurora Weaver', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/aurora-1.png', creator: 'NorthernLights', likes: 842, views: 2178, comments: 149 },
+  { id: 'a12', name: 'Mystic Seer', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/mystic-1.png', creator: 'EnchantedArts', likes: 861, views: 2265, comments: 152 },
 ];
 
 const Explore = () => {
