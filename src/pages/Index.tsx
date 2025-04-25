@@ -9,33 +9,97 @@ import ChatRoom from '@/components/ChatRoom';
 import { ArrowRight, Sparkles, MessageCircle, PlusCircle } from 'lucide-react';
 
 const featuredAvatars = [
-  { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
-  { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
-  { id: 'a3', name: 'Ethereal Spirit', imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'StardustMage', likes: 163, views: 745, comments: 27 },
-  { id: 'a4', name: 'Crimson Fox', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'SakuraDreams', likes: 217, views: 934, comments: 41 },
+  { 
+    id: 'a1', 
+    name: 'Cyber Neko', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-1.png', 
+    creator: 'NeonKitsune', 
+    likes: 245, 
+    views: 1023, 
+    comments: 48 
+  },
+  { 
+    id: 'a2', 
+    name: 'Spirit Guardian', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-2.png', 
+    creator: 'PurpleSamurai', 
+    likes: 189, 
+    views: 876, 
+    comments: 32 
+  },
+  { 
+    id: 'a3', 
+    name: 'Moon Princess', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-3.png', 
+    creator: 'StardustMage', 
+    likes: 163, 
+    views: 745, 
+    comments: 27 
+  },
+  { 
+    id: 'a4', 
+    name: 'Tech Samurai', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-4.png', 
+    creator: 'CyberArtist', 
+    likes: 217, 
+    views: 934, 
+    comments: 41 
+  },
 ];
 
 const trendingAvatars = [
-  { id: 'a5', name: 'Galaxy Wanderer', imageUrl: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'CosmicMage', likes: 312, views: 1547, comments: 63 },
-  { id: 'a6', name: 'Neon Ronin', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'TechnoSamurai', likes: 278, views: 1398, comments: 51 },
-  { id: 'a7', name: 'Azure Dragon', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'OceanSpirit', likes: 256, views: 1124, comments: 46 },
-  { id: 'a8', name: 'Sakura Princess', imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'BlossomNinja', likes: 283, views: 1267, comments: 58 },
+  { 
+    id: 'a5', 
+    name: 'Crystal Mage', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-5.png', 
+    creator: 'CosmicMage', 
+    likes: 312, 
+    views: 1547, 
+    comments: 63 
+  },
+  { 
+    id: 'a6', 
+    name: 'Neon Hunter', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-6.png', 
+    creator: 'TechnoSamurai', 
+    likes: 278, 
+    views: 1398, 
+    comments: 51 
+  },
+  { 
+    id: 'a7', 
+    name: 'Sky Ninja', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-7.png', 
+    creator: 'CloudMaster', 
+    likes: 256, 
+    views: 1124, 
+    comments: 46 
+  },
+  { 
+    id: 'a8', 
+    name: 'Dragon Rider', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/anime-8.png', 
+    creator: 'DragonLord', 
+    likes: 283, 
+    views: 1267, 
+    comments: 58 
+  },
 ];
 
 const Index = () => {
   return (
     <div className="space-y-12 pb-12">
       {/* Hero section */}
-      <section className="bg-gradient-to-r from-anime-purple to-anime-magenta py-24 px-6 text-white">
+      <section className="bg-gradient-to-r from-anime-purple to-anime-magenta py-12 sm:py-24 px-4 sm:px-6">
         <div className="container">
-          <div className="max-w-2xl space-y-6">
+          <div className="max-w-2xl space-y-4 sm:space-y-6">
             <Badge className="bg-white/20 hover:bg-white/30 text-white">✨ Create Your Dream Anime Avatar</Badge>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Vibrant Anime Avatars with Real-Time Creation
             </h1>
             
-            <p className="text-lg text-white/80">
+            <p className="text-base sm:text-lg text-white/80">
               Express yourself with customizable anime avatars. Create, share, and chat with others in our vibrant community.
             </p>
             
@@ -64,7 +128,7 @@ const Index = () => {
       </section>
       
       {/* Avatars Gallery */}
-      <section className="container">
+      <section className="container px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold">Trending Avatars</h2>
@@ -87,7 +151,7 @@ const Index = () => {
           </TabsList>
           
           <TabsContent value="featured" className="animate-scale-in">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {featuredAvatars.map((avatar) => (
                 <AvatarCard key={avatar.id} {...avatar} />
               ))}
@@ -95,7 +159,7 @@ const Index = () => {
           </TabsContent>
           
           <TabsContent value="trending" className="animate-scale-in">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {trendingAvatars.map((avatar) => (
                 <AvatarCard key={avatar.id} {...avatar} />
               ))}
@@ -103,7 +167,7 @@ const Index = () => {
           </TabsContent>
           
           <TabsContent value="new" className="animate-scale-in">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {featuredAvatars.slice(0, 2).concat(trendingAvatars.slice(0, 2)).map((avatar) => (
                 <AvatarCard key={avatar.id} {...avatar} />
               ))}
@@ -180,8 +244,8 @@ const Index = () => {
       </section>
       
       {/* Features section */}
-      <section className="bg-gradient-to-br from-white via-purple-50 to-blue-50 py-16">
-        <div className="container">
+      <section className="bg-gradient-to-br from-white via-purple-50 to-blue-50 py-12 sm:py-16">
+        <div className="container px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="inline-block rounded-full bg-anime-purple/10 px-3 py-1 text-sm font-medium text-anime-purple mb-4">
               Why Choose Us
@@ -238,7 +302,7 @@ const Index = () => {
       </section>
       
       {/* CTA section */}
-      <section className="container">
+      <section className="container px-4 sm:px-6">
         <div className="rounded-2xl bg-gradient-to-r from-anime-purple to-anime-magenta p-8 md:p-12 text-white">
           <div className="max-w-2xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-bold">Ready to Express Yourself?</h2>

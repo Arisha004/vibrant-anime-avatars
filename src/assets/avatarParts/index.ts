@@ -3,27 +3,27 @@ export const hairStyles = [
   {
     id: 'h1',
     name: 'Spiky Anime',
-    imageUrl: '/hair-spiky.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/hair-1.png'
   },
   {
     id: 'h2',
     name: 'Long Flowing',
-    imageUrl: '/hair-long.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/hair-2.png'
   },
   {
     id: 'h3',
     name: 'Short Messy',
-    imageUrl: '/hair-short.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/hair-3.png'
   },
   {
     id: 'h4',
     name: 'Twin Tails',
-    imageUrl: '/hair-twin-tails.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/hair-4.png'
   },
   {
     id: 'h5',
     name: 'Punk Style',
-    imageUrl: '/hair-punk.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/hair-5.png'
   }
 ];
 
@@ -32,27 +32,27 @@ export const eyeStyles = [
   {
     id: 'e1',
     name: 'Bright Round',
-    imageUrl: '/eyes-bright.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/eyes-1.png'
   },
   {
     id: 'e2',
     name: 'Sharp Cat',
-    imageUrl: '/eyes-cat.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/eyes-2.png'
   },
   {
     id: 'e3',
     name: 'Gentle',
-    imageUrl: '/eyes-gentle.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/eyes-3.png'
   },
   {
     id: 'e4',
     name: 'Determined',
-    imageUrl: '/eyes-determined.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/eyes-4.png'
   },
   {
     id: 'e5',
     name: 'Mysterious',
-    imageUrl: '/eyes-mysterious.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/eyes-5.png'
   }
 ];
 
@@ -61,27 +61,27 @@ export const mouthStyles = [
   {
     id: 'm1',
     name: 'Sweet Smile',
-    imageUrl: '/mouth-smile.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/mouth-1.png'
   },
   {
     id: 'm2',
     name: 'Confident',
-    imageUrl: '/mouth-confident.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/mouth-2.png'
   },
   {
     id: 'm3',
     name: 'Cheerful',
-    imageUrl: '/mouth-cheerful.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/mouth-3.png'
   },
   {
     id: 'm4',
     name: 'Pouty',
-    imageUrl: '/mouth-pouty.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/mouth-4.png'
   },
   {
     id: 'm5',
     name: 'Playful',
-    imageUrl: '/mouth-playful.png'
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/mouth-5.png'
   }
 ];
 
