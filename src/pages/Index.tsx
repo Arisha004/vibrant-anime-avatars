@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,7 +8,6 @@ import AvatarCreator from '@/components/AvatarCreator';
 import ChatRoom from '@/components/ChatRoom';
 import { ArrowRight, Sparkles, MessageCircle, PlusCircle } from 'lucide-react';
 
-// Mock avatar data (replace imageUrls with actual anime Unsplash face image links)
 const featuredAvatars = [
   { id: 'a1', name: 'Cosmic Samurai', imageUrl: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'NeonKitsune', likes: 245, views: 1023, comments: 48 },
   { id: 'a2', name: 'Cyberpunk Ninja', imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80', creator: 'PurpleSamurai', likes: 189, views: 876, comments: 32 },
@@ -53,7 +51,7 @@ const Index = () => {
                 asChild 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white/30 hover:text-anime-purple transition-colors"
+                className="border-white text-anime-purple bg-white/30 hover:bg-white/50 transition-colors"
               >
                 <Link to="/explore">
                   Explore Gallery
@@ -260,7 +258,7 @@ const Index = () => {
                 asChild 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white/30 hover:text-anime-purple transition-colors"
+                className="border-white text-anime-purple bg-white/30 hover:bg-white/50 transition-colors"
               >
                 <Link to="/explore">
                   Explore Gallery
