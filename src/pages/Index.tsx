@@ -115,7 +115,7 @@ const Index = () => {
                 asChild 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-anime-purple bg-white/30 hover:bg-white/50 transition-colors"
+                className="border-white text-white bg-white/20 hover:bg-white/40 transition-colors"
               >
                 <Link to="/explore">
                   Explore Gallery
@@ -322,7 +322,7 @@ const Index = () => {
                 asChild 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-anime-purple bg-white/30 hover:bg-white/50 transition-colors"
+                className="border-white text-white bg-white/20 hover:bg-white/40 transition-colors"
               >
                 <Link to="/explore">
                   Explore Gallery
