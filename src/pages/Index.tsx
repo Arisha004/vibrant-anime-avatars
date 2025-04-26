@@ -51,7 +51,7 @@ const trendingAvatars = [
   { 
     id: 'a5', 
     name: 'Snow Queen', 
-    imageUrl: '/lovable-uploads/044f1f61-4521-4743-b2ba-2d1257fe3b18.png', 
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/snow-1.png', 
     creator: 'WinterDreams', 
     likes: 1312, 
     views: 5547, 

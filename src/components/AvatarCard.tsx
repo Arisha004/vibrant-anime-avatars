@@ -29,6 +29,7 @@ const AvatarCard = ({
 }: AvatarCardProps) => {
   const [likes, setLikes] = useState(initialLikes);
   const [isLiked, setIsLiked] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const handleLike = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -50,6 +51,9 @@ const AvatarCard = ({
     }
   };
 
+  // Fallback image URL
+  const fallbackImage = 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/fallback-avatar.png';
+
   return (
     <Link 
       to={`/avatar/${id}`}
@@ -60,13 +64,10 @@ const AvatarCard = ({
     >
       <div className="relative aspect-square overflow-hidden">
         <img 
-          src={imageUrl} 
+          src={imageError ? fallbackImage : imageUrl} 
           alt={name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/fallback-avatar.png';
-          }}
+          onError={() => setImageError(true)}
         />
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
