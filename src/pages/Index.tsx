@@ -90,38 +90,51 @@ const Index = () => {
   return (
     <div className="space-y-12 pb-12">
       {/* Hero section */}
-      <section className="bg-gradient-to-r from-anime-purple to-anime-magenta py-12 sm:py-24 px-4 sm:px-6">
-        <div className="container">
-          <div className="max-w-2xl space-y-4 sm:space-y-6">
-            <Badge className="bg-white/20 hover:bg-white/30 text-white">✨ Create Your Dream Anime Avatar</Badge>
-            
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Vibrant Anime Avatars with Real-Time Creation
-            </h1>
-            
-            <p className="text-base sm:text-lg text-white/80">
-              Express yourself with customizable anime avatars. Create, share, and chat with others in our vibrant community.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button asChild size="lg" className="bg-white text-anime-purple hover:bg-white/90">
-                <Link to="/create">
-                  Create Your Avatar
-                  <Sparkles className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+      <section className="bg-gradient-to-r from-anime-purple to-anime-magenta py-12 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
+        <div className="container relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4 sm:space-y-6 relative z-10">
+              <Badge className="bg-white/20 hover:bg-white/30 text-white">✨ Create Your Dream Anime Avatar</Badge>
               
-              <Button 
-                asChild 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white bg-white/20 hover:bg-white/40 transition-colors"
-              >
-                <Link to="/explore">
-                  Explore Gallery
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+                Vibrant Anime Avatars with Real-Time Creation
+              </h1>
+              
+              <p className="text-base sm:text-lg text-white/80">
+                Express yourself with customizable anime avatars. Create, share, and chat with others in our vibrant community.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button asChild size="lg" className="bg-white text-anime-purple hover:bg-white/90">
+                  <Link to="/create">
+                    Create Your Avatar
+                    <Sparkles className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                
+                <Button 
+                  asChild 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-white bg-white/20 hover:bg-white/40 transition-colors"
+                >
+                  <Link to="/explore">
+                    Explore Gallery
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="hidden lg:flex justify-end relative z-10">
+              <div className="relative w-[400px] h-[400px]">
+                <img
+                  src="/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png"
+                  alt="Anime Avatar"
+                  className="w-full h-full object-contain animate-float drop-shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-anime-purple/20 to-transparent rounded-full blur-3xl -z-10" />
+              </div>
             </div>
           </div>
         </div>
