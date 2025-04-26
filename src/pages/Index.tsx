@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -132,6 +133,12 @@ const Index = () => {
                   src="/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png"
                   alt="Anime Avatar"
                   className="w-full h-full object-contain animate-float drop-shadow-2xl"
+                  loading="eager"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    console.error("Failed to load hero image:", target.src);
+                    target.src = "https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/fallback-avatar.png";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-anime-purple/20 to-transparent rounded-full blur-3xl -z-10" />
               </div>

@@ -30,6 +30,7 @@ const AvatarCard = ({
   const [likes, setLikes] = useState(initialLikes);
   const [isLiked, setIsLiked] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleLike = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -63,11 +64,26 @@ const AvatarCard = ({
       )}
     >
       <div className="relative aspect-square overflow-hidden">
+        {!imageLoaded && !imageError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-muted/30 animate-pulse">
+            <div className="w-8 h-8 rounded-full border-2 border-t-transparent border-primary animate-spin"></div>
+          </div>
+        )}
+        
         <img 
           src={imageError ? fallbackImage : imageUrl} 
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          onError={() => setImageError(true)}
+          className={cn(
+            "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110",
+            !imageLoaded && !imageError && "opacity-0"
+          )}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => {
+            console.error("Failed to load avatar image:", imageUrl);
+            setImageError(true);
+            setImageLoaded(true);
+          }}
+          loading="eager"
         />
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
