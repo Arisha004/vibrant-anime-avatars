@@ -1,3 +1,4 @@
+
 // Hair Styles
 export const hairStyles = [
   {
@@ -95,12 +96,12 @@ export const skinTones = [
   { id: 's6', color: '#5E3413', name: 'Very Dark' },
 ];
 
-// Updated Sample Avatars
+// Updated Sample Avatars with anime avatar images
 export const sampleAvatars = [
   {
     id: 'avatar1',
     name: 'Sakura Spirit',
-    imageUrl: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80',
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/sakura-1.png',
     creator: 'AnimeArtist',
     likes: 342,
     views: 1542,
@@ -109,7 +110,7 @@ export const sampleAvatars = [
   {
     id: 'avatar2',
     name: 'Cyber Ninja',
-    imageUrl: 'https://images.unsplash.com/photo-1560184897-502a475f7a0d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80',
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/neon-1.png',
     creator: 'DigitalDreamer',
     likes: 289,
     views: 1298,
@@ -118,7 +119,7 @@ export const sampleAvatars = [
   {
     id: 'avatar3',
     name: 'Moon Princess',
-    imageUrl: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80',
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/moon-1.png',
     creator: 'LunarArtist',
     likes: 267,
     views: 987,
@@ -127,10 +128,11 @@ export const sampleAvatars = [
   {
     id: 'avatar4',
     name: 'Dragon Knight',
-    imageUrl: 'https://images.unsplash.com/photo-1560184897-502a475f7a0d?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80',
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/celestial-1.png',
     creator: 'FantasyCreator',
     likes: 198,
     views: 856,
     comments: 34
   }
 ];
+

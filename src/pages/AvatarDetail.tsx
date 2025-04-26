@@ -13,14 +13,14 @@ import {
 import { toast } from '@/components/ui/use-toast';
 import { Link } from 'react-router-dom';
 
-// Mock avatar data
+// Mock avatar data with updated proper anime avatar images
 const avatarData = {
   'a1': {
     id: 'a1',
-    name: 'Cosmic Samurai',
-    imageUrl: 'https://via.placeholder.com/600?text=Cosmic+Samurai',
+    name: 'Crystal Angel',
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/crystal-1.png',
     creator: 'NeonKitsune',
-    creatorAvatar: 'https://via.placeholder.com/40?text=NK',
+    creatorAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-1.png',
     description: 'A cosmic warrior inspired by traditional samurai aesthetics combined with space elements. The armor glows with nebula patterns and the helmet has star constellations embedded in it.',
     created: '2024-03-18T14:30:00Z',
     likes: 245,
@@ -29,7 +29,7 @@ const avatarData = {
       {
         id: 'c1',
         user: 'SakuraDreams',
-        userAvatar: 'https://via.placeholder.com/40?text=SD',
+        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-2.png',
         content: 'This is amazing! I love the colors and the cosmic theme.',
         timestamp: '2024-03-18T16:45:00Z',
         likes: 12,
@@ -37,7 +37,7 @@ const avatarData = {
       {
         id: 'c2',
         user: 'PurpleSamurai',
-        userAvatar: 'https://via.placeholder.com/40?text=PS',
+        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-3.png',
         content: 'The detail in the armor is incredible. How long did this take you?',
         timestamp: '2024-03-19T09:20:00Z',
         likes: 8,
@@ -45,7 +45,7 @@ const avatarData = {
       {
         id: 'c3',
         user: 'StardustMage',
-        userAvatar: 'https://via.placeholder.com/40?text=SM',
+        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-4.png',
         content: 'I\'m getting major space ronin vibes from this. Would love to see more of this style!',
         timestamp: '2024-03-20T11:15:00Z',
         likes: 5,
@@ -55,10 +55,10 @@ const avatarData = {
   },
   'a2': {
     id: 'a2',
-    name: 'Cyberpunk Ninja',
-    imageUrl: 'https://via.placeholder.com/600?text=Cyberpunk+Ninja',
+    name: 'Sakura Spirit',
+    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/sakura-1.png',
     creator: 'PurpleSamurai',
-    creatorAvatar: 'https://via.placeholder.com/40?text=PS',
+    creatorAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-3.png',
     description: 'A futuristic ninja with cybernetic enhancements. Neon accents highlight the sleek armor and mask, with digital patterns flowing across the surface. The eyes glow with an eerie blue light.',
     created: '2024-03-15T10:20:00Z',
     likes: 189,
@@ -67,7 +67,7 @@ const avatarData = {
       {
         id: 'c1',
         user: 'NeonKitsune',
-        userAvatar: 'https://via.placeholder.com/40?text=NK',
+        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-1.png',
         content: 'The neon details really pop against the dark armor. Fantastic work!',
         timestamp: '2024-03-15T14:30:00Z',
         likes: 7,
@@ -75,7 +75,7 @@ const avatarData = {
       {
         id: 'c2',
         user: 'TechnoSamurai',
-        userAvatar: 'https://via.placeholder.com/40?text=TS',
+        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-5.png',
         content: 'This is giving me major Ghost in the Shell vibes. Love it!',
         timestamp: '2024-03-16T08:45:00Z',
         likes: 9,
