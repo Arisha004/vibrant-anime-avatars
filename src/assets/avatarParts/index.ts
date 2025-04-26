@@ -135,4 +135,3 @@ export const sampleAvatars = [
     comments: 34
   }
 ];
-

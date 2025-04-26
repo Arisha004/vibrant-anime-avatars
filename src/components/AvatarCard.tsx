@@ -65,7 +65,7 @@ const AvatarCard = ({
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = 'https://via.placeholder.com/400x400?text=Anime+Avatar';
+            target.src = 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/fallback-avatar.png';
           }}
         />
         
