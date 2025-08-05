@@ -13,14 +13,21 @@ import {
 import { toast } from '@/components/ui/use-toast';
 import { Link } from 'react-router-dom';
 
-// Mock avatar data with updated proper anime avatar images
+// Import avatar images
+import crystalAvatar from '@/assets/crystal-avatar.png';
+import sakuraAvatar from '@/assets/sakura-avatar.png';
+import azureAvatar from '@/assets/azure-avatar.png';
+import neonAvatar from '@/assets/neon-avatar.png';
+import fallbackAvatar from '@/assets/fallback-avatar.png';
+
+// Avatar data with local images
 const avatarData = {
   'a1': {
     id: 'a1',
     name: 'Crystal Angel',
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/crystal-1.png',
+    imageUrl: crystalAvatar,
     creator: 'NeonKitsune',
-    creatorAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-1.png',
+    creatorAvatar: fallbackAvatar,
     description: 'A cosmic warrior inspired by traditional samurai aesthetics combined with space elements. The armor glows with nebula patterns and the helmet has star constellations embedded in it.',
     created: '2024-03-18T14:30:00Z',
     likes: 245,
@@ -29,7 +36,7 @@ const avatarData = {
       {
         id: 'c1',
         user: 'SakuraDreams',
-        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-2.png',
+        userAvatar: fallbackAvatar,
         content: 'This is amazing! I love the colors and the cosmic theme.',
         timestamp: '2024-03-18T16:45:00Z',
         likes: 12,
@@ -37,7 +44,7 @@ const avatarData = {
       {
         id: 'c2',
         user: 'PurpleSamurai',
-        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-3.png',
+        userAvatar: fallbackAvatar,
         content: 'The detail in the armor is incredible. How long did this take you?',
         timestamp: '2024-03-19T09:20:00Z',
         likes: 8,
@@ -45,7 +52,7 @@ const avatarData = {
       {
         id: 'c3',
         user: 'StardustMage',
-        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-4.png',
+        userAvatar: fallbackAvatar,
         content: 'I\'m getting major space ronin vibes from this. Would love to see more of this style!',
         timestamp: '2024-03-20T11:15:00Z',
         likes: 5,
@@ -56,9 +63,9 @@ const avatarData = {
   'a2': {
     id: 'a2',
     name: 'Sakura Spirit',
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/sakura-1.png',
+    imageUrl: sakuraAvatar,
     creator: 'PurpleSamurai',
-    creatorAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-3.png',
+    creatorAvatar: fallbackAvatar,
     description: 'A futuristic ninja with cybernetic enhancements. Neon accents highlight the sleek armor and mask, with digital patterns flowing across the surface. The eyes glow with an eerie blue light.',
     created: '2024-03-15T10:20:00Z',
     likes: 189,
@@ -67,7 +74,7 @@ const avatarData = {
       {
         id: 'c1',
         user: 'NeonKitsune',
-        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-1.png',
+        userAvatar: fallbackAvatar,
         content: 'The neon details really pop against the dark armor. Fantastic work!',
         timestamp: '2024-03-15T14:30:00Z',
         likes: 7,
@@ -75,13 +82,39 @@ const avatarData = {
       {
         id: 'c2',
         user: 'TechnoSamurai',
-        userAvatar: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/creator-5.png',
+        userAvatar: fallbackAvatar,
         content: 'This is giving me major Ghost in the Shell vibes. Love it!',
         timestamp: '2024-03-16T08:45:00Z',
         likes: 9,
       },
     ],
     tags: ['cyberpunk', 'ninja', 'neon', 'futuristic', 'tech'],
+  },
+  'a3': {
+    id: 'a3',
+    name: 'Azure Princess',
+    imageUrl: azureAvatar,
+    creator: 'DigitalMuse',
+    creatorAvatar: fallbackAvatar,
+    description: 'A regal anime character with flowing azure robes and a crown of stars. The elegant design features intricate patterns and celestial motifs.',
+    created: '2024-03-12T08:15:00Z',
+    likes: 298,
+    views: 1156,
+    comments: [],
+    tags: ['royal', 'elegant', 'blue', 'princess', 'celestial'],
+  },
+  'a4': {
+    id: 'a4',
+    name: 'Neon Priestess',
+    imageUrl: neonAvatar,
+    creator: 'CyberArtist',
+    creatorAvatar: fallbackAvatar,
+    description: 'A cyberpunk-inspired priestess with glowing neon accents and futuristic ceremonial robes. The perfect blend of spirituality and technology.',
+    created: '2024-03-10T19:45:00Z',
+    likes: 412,
+    views: 1834,
+    comments: [],
+    tags: ['cyberpunk', 'neon', 'priestess', 'technology', 'spiritual'],
   }
 };
 
@@ -122,18 +155,67 @@ const AvatarDetail = () => {
     setCommentInput('');
   };
   
-  const handleDownload = () => {
-    toast({
-      title: "Avatar Downloaded",
-      description: "The avatar has been saved to your device.",
-    });
+  const handleDownload = async () => {
+    try {
+      // Create a link element and trigger download
+      const link = document.createElement('a');
+      link.href = avatar.imageUrl;
+      link.download = `${avatar.name.replace(/\s+/g, '_')}_avatar.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast({
+        title: "Avatar Downloaded",
+        description: "The avatar has been saved to your device.",
+      });
+    } catch (error) {
+      toast({
+        title: "Download Failed",
+        description: "Failed to download the avatar. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
   
-  const handleShare = () => {
-    toast({
-      title: "Share Link Copied",
-      description: "Share link has been copied to clipboard.",
-    });
+  const handleShare = async () => {
+    const shareUrl = `${window.location.origin}/avatar/${avatar.id}`;
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `Check out this avatar: ${avatar.name}`,
+          text: `Created by ${avatar.creator}`,
+          url: shareUrl,
+        });
+        toast({
+          title: "Shared Successfully",
+          description: "Avatar shared via native sharing.",
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          copyToClipboard(shareUrl);
+        }
+      }
+    } else {
+      copyToClipboard(shareUrl);
+    }
+  };
+  
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast({
+        title: "Link Copied",
+        description: "Share link has been copied to clipboard.",
+      });
+    } catch (error) {
+      toast({
+        title: "Copy Failed",
+        description: "Failed to copy link. Please copy manually.",
+        variant: "destructive",
+      });
+    }
   };
   
   // Format date
@@ -182,7 +264,11 @@ const AvatarDetail = () => {
             <img 
               src={avatar.imageUrl} 
               alt={avatar.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover filter contrast-105 saturate-105"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = fallbackAvatar;
+              }}
             />
           </div>
         </div>
@@ -292,7 +378,7 @@ const AvatarDetail = () => {
           <TabsContent value="comments" className="space-y-6">
             <div className="flex gap-4">
               <Avatar className="h-10 w-10">
-                <AvatarImage src="https://via.placeholder.com/40?text=Me" />
+                <AvatarImage src={fallbackAvatar} />
                 <AvatarFallback>Me</AvatarFallback>
               </Avatar>
               
@@ -357,7 +443,11 @@ const AvatarDetail = () => {
                     <img 
                       src={relatedAvatar.imageUrl} 
                       alt={relatedAvatar.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover filter contrast-105 saturate-105"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = fallbackAvatar;
+                      }}
                     />
                   </div>
                   <div className="p-3">
