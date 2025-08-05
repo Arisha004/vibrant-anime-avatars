@@ -5,6 +5,7 @@ import { Heart, Eye, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
+import fallbackImage from '@/assets/fallback-avatar.png';
 
 interface AvatarCardProps {
   id: string;
@@ -52,8 +53,6 @@ const AvatarCard = ({
     }
   };
 
-  // Fallback image URL
-  const fallbackImage = 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/fallback-avatar.png';
 
   return (
     <Link 
@@ -72,18 +71,20 @@ const AvatarCard = ({
         
         <img 
           src={imageError ? fallbackImage : imageUrl} 
-          alt={name}
+          alt={`${name} - Anime Avatar by ${creator}`}
           className={cn(
-            "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110",
-            !imageLoaded && !imageError && "opacity-0"
+            "w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110",
+            !imageLoaded && !imageError && "opacity-0",
+            "filter contrast-105 saturate-105"
           )}
           onLoad={() => setImageLoaded(true)}
-          onError={() => {
+          onError={(e) => {
             console.error("Failed to load avatar image:", imageUrl);
             setImageError(true);
             setImageLoaded(true);
           }}
-          loading="eager"
+          loading="lazy"
+          style={{ imageRendering: 'crisp-edges' }}
         />
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

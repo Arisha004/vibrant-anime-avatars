@@ -7,13 +7,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AvatarCard from '@/components/AvatarCard';
 import AvatarCreator from '@/components/AvatarCreator';
 import ChatRoom from '@/components/ChatRoom';
+import StructuredData from '@/components/StructuredData';
 import { ArrowRight, Sparkles, MessageCircle, PlusCircle } from 'lucide-react';
+
+// Import generated avatar images
+import crystalAvatar from '@/assets/crystal-avatar.png';
+import sakuraAvatar from '@/assets/sakura-avatar.png';
+import azureAvatar from '@/assets/azure-avatar.png';
+import neonAvatar from '@/assets/neon-avatar.png';
+import fallbackAvatar from '@/assets/fallback-avatar.png';
 
 const featuredAvatars = [
   { 
     id: 'a1', 
     name: 'Crystal Angel', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/crystal-1.png', 
+    imageUrl: crystalAvatar, 
     creator: 'ArtisticDreams', 
     likes: 845, 
     views: 3023, 
@@ -22,7 +30,7 @@ const featuredAvatars = [
   { 
     id: 'a2', 
     name: 'Sakura Spirit', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/sakura-1.png', 
+    imageUrl: sakuraAvatar, 
     creator: 'AnimeArtist', 
     likes: 789, 
     views: 2876, 
@@ -31,7 +39,7 @@ const featuredAvatars = [
   { 
     id: 'a3', 
     name: 'Azure Princess', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/azure-1.png', 
+    imageUrl: azureAvatar, 
     creator: 'DigitalMuse', 
     likes: 763, 
     views: 2445, 
@@ -40,7 +48,7 @@ const featuredAvatars = [
   { 
     id: 'a4', 
     name: 'Neon Priestess', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/neon-1.png', 
+    imageUrl: neonAvatar, 
     creator: 'CyberArtist', 
     likes: 917, 
     views: 3934, 
@@ -52,7 +60,7 @@ const trendingAvatars = [
   { 
     id: 'a5', 
     name: 'Snow Queen', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/snow-1.png', 
+    imageUrl: crystalAvatar, 
     creator: 'WinterDreams', 
     likes: 1312, 
     views: 5547, 
@@ -61,7 +69,7 @@ const trendingAvatars = [
   { 
     id: 'a6', 
     name: 'Cherry Blossom', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/cherry-1.png', 
+    imageUrl: sakuraAvatar, 
     creator: 'SakuraArt', 
     likes: 1178, 
     views: 4398, 
@@ -70,7 +78,7 @@ const trendingAvatars = [
   { 
     id: 'a7', 
     name: 'Starlight Mage', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/star-1.png', 
+    imageUrl: azureAvatar, 
     creator: 'GalacticDreams', 
     likes: 1056, 
     views: 4124, 
@@ -79,7 +87,7 @@ const trendingAvatars = [
   { 
     id: 'a8', 
     name: 'Moon Guardian', 
-    imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/moon-1.png', 
+    imageUrl: neonAvatar, 
     creator: 'LunarArtist', 
     likes: 983, 
     views: 3267, 
@@ -89,7 +97,9 @@ const trendingAvatars = [
 
 const Index = () => {
   return (
-    <div className="space-y-12 pb-12">
+    <>
+      <StructuredData />
+      <div className="space-y-12 pb-12">
       {/* Hero section */}
       <section className="bg-gradient-to-r from-anime-purple to-anime-magenta py-12 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
         <div className="container relative">
@@ -128,19 +138,21 @@ const Index = () => {
             </div>
 
             <div className="hidden lg:flex justify-end relative z-10">
-              <div className="relative w-[400px] h-[400px]">
+              <div className="relative w-[500px] h-[500px] hover:scale-105 transition-transform duration-500">
                 <img
                   src="/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png"
-                  alt="Anime Avatar"
-                  className="w-full h-full object-contain animate-float drop-shadow-2xl"
+                  alt="Beautiful Anime Avatar Character - AnimeAvatars Creator"
+                  className="w-full h-full object-contain animate-float drop-shadow-2xl filter brightness-110 contrast-110"
                   loading="eager"
+                  style={{ imageRendering: 'crisp-edges' }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     console.error("Failed to load hero image:", target.src);
                     target.src = "https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/fallback-avatar.png";
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-anime-purple/20 to-transparent rounded-full blur-3xl -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-anime-purple/30 to-transparent rounded-full blur-3xl -z-10 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-r from-anime-magenta/20 to-anime-purple/20 rounded-full blur-2xl -z-20" />
               </div>
             </div>
           </div>
@@ -352,7 +364,8 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

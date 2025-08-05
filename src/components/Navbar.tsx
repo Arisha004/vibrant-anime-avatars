@@ -42,17 +42,43 @@ const Navbar = () => {
           </nav>
           
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="relative">
-              <Bell className="h-5 w-5" />
-              <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-anime-magenta"></span>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="relative hover:bg-anime-purple/10 transition-colors"
+              title="Notifications"
+              onClick={() => {
+                // Add notification functionality here
+                alert('Notifications feature coming soon!');
+              }}
+            >
+              <Bell className="h-5 w-5 text-foreground hover:text-anime-purple transition-colors" />
+              <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-anime-magenta animate-pulse"></span>
             </Button>
             
-            <Button variant="ghost" size="icon">
-              <MessageCircle className="h-5 w-5" />
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="hover:bg-anime-purple/10 transition-colors"
+              title="Messages"
+              asChild
+            >
+              <Link to="/chat">
+                <MessageCircle className="h-5 w-5 text-foreground hover:text-anime-purple transition-colors" />
+              </Link>
             </Button>
             
-            <Button variant="ghost" size="icon" className="rounded-full overflow-hidden">
-              <div className="h-full w-full bg-gradient-to-br from-anime-purple to-anime-magenta flex items-center justify-center">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="rounded-full overflow-hidden hover:scale-105 transition-transform"
+              title="Profile"
+              onClick={() => {
+                // Add profile functionality here
+                alert('Profile feature coming soon!');
+              }}
+            >
+              <div className="h-full w-full bg-gradient-to-br from-anime-purple to-anime-magenta flex items-center justify-center hover:from-anime-purple/90 hover:to-anime-magenta/90 transition-colors">
                 <User className="h-5 w-5 text-white" />
               </div>
             </Button>
