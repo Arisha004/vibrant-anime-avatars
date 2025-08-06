@@ -9,19 +9,20 @@ import { Label } from '@/components/ui/label';
 import { Search, Filter, ArrowUpDown } from 'lucide-react';
 import AvatarCard from '@/components/AvatarCard';
 
+// Sample diverse avatar data with different combinations
 const allAvatars = [
-  { id: 'a1', name: 'Crystal Angel', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/crystal-1.png', creator: 'ArtisticDreams', likes: 845, views: 3023, comments: 148 },
-  { id: 'a2', name: 'Sakura Spirit', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/sakura-1.png', creator: 'AnimeArtist', likes: 789, views: 2876, comments: 132 },
-  { id: 'a3', name: 'Azure Princess', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/azure-1.png', creator: 'DigitalMuse', likes: 763, views: 2445, comments: 127 },
-  { id: 'a4', name: 'Neon Priestess', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/neon-1.png', creator: 'CyberArtist', likes: 917, views: 3934, comments: 241 },
-  { id: 'a5', name: 'Snow Queen', imageUrl: '/lovable-uploads/044f1f61-4521-4743-b2ba-2d1257fe3b18.png', creator: 'WinterDreams', likes: 1312, views: 5547, comments: 263 },
-  { id: 'a6', name: 'Cherry Blossom', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/cherry-1.png', creator: 'SakuraArt', likes: 1178, views: 4398, comments: 251 },
-  { id: 'a7', name: 'Starlight Mage', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/star-1.png', creator: 'GalacticDreams', likes: 1056, views: 4124, comments: 246 },
-  { id: 'a8', name: 'Moon Guardian', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/moon-1.png', creator: 'LunarArtist', likes: 983, views: 3267, comments: 158 },
-  { id: 'a9', name: 'Celestial Maiden', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/celestial-1.png', creator: 'StardustArt', likes: 892, views: 2952, comments: 137 },
-  { id: 'a10', name: 'Solar Knight', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/solar-1.png', creator: 'SunlightStudio', likes: 927, views: 3089, comments: 143 },
-  { id: 'a11', name: 'Aurora Weaver', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/aurora-1.png', creator: 'NorthernLights', likes: 842, views: 2178, comments: 149 },
-  { id: 'a12', name: 'Mystic Seer', imageUrl: 'https://pub-3626123a908346a7a8be8d9295f44e26.r2.dev/mystic-1.png', creator: 'EnchantedArts', likes: 861, views: 2265, comments: 152 },
+  { id: 'a1', name: 'Crystal Angel', imageUrl: '/src/assets/crystal-avatar.png', creator: 'ArtisticDreams', likes: 845, views: 3023, comments: 148, hair: 'h2', eyes: 'e1', mouth: 'm1', skin: 's1' },
+  { id: 'a2', name: 'Sakura Spirit', imageUrl: '/src/assets/sakura-avatar.png', creator: 'AnimeArtist', likes: 789, views: 2876, comments: 132, hair: 'h4', eyes: 'e3', mouth: 'm1', skin: 's2' },
+  { id: 'a3', name: 'Azure Princess', imageUrl: '/src/assets/azure-avatar.png', creator: 'DigitalMuse', likes: 763, views: 2445, comments: 127, hair: 'h1', eyes: 'e2', mouth: 'm3', skin: 's1' },
+  { id: 'a4', name: 'Neon Priestess', imageUrl: '/src/assets/neon-avatar.png', creator: 'CyberArtist', likes: 917, views: 3934, comments: 241, hair: 'h3', eyes: 'e5', mouth: 'm2', skin: 's3' },
+  { id: 'a5', name: 'Snow Queen', imageUrl: '/src/assets/fallback-avatar.png', creator: 'WinterDreams', likes: 1312, views: 5547, comments: 263, hair: 'h2', eyes: 'e1', mouth: 'm1', skin: 's1' },
+  { id: 'a6', name: 'Cherry Blossom', imageUrl: '/src/assets/sakura-avatar.png', creator: 'SakuraArt', likes: 1178, views: 4398, comments: 251, hair: 'h4', eyes: 'e3', mouth: 'm5', skin: 's2' },
+  { id: 'a7', name: 'Starlight Mage', imageUrl: '/src/assets/crystal-avatar.png', creator: 'GalacticDreams', likes: 1056, views: 4124, comments: 246, hair: 'h1', eyes: 'e4', mouth: 'm2', skin: 's3' },
+  { id: 'a8', name: 'Moon Guardian', imageUrl: '/src/assets/azure-avatar.png', creator: 'LunarArtist', likes: 983, views: 3267, comments: 158, hair: 'h5', eyes: 'e2', mouth: 'm4', skin: 's4' },
+  { id: 'a9', name: 'Celestial Maiden', imageUrl: '/src/assets/neon-avatar.png', creator: 'StardustArt', likes: 892, views: 2952, comments: 137, hair: 'h2', eyes: 'e5', mouth: 'm1', skin: 's5' },
+  { id: 'a10', name: 'Solar Knight', imageUrl: '/src/assets/fallback-avatar.png', creator: 'SunlightStudio', likes: 927, views: 3089, comments: 143, hair: 'h3', eyes: 'e4', mouth: 'm3', skin: 's6' },
+  { id: 'a11', name: 'Aurora Weaver', imageUrl: '/src/assets/crystal-avatar.png', creator: 'NorthernLights', likes: 842, views: 2178, comments: 149, hair: 'h4', eyes: 'e1', mouth: 'm2', skin: 's2' },
+  { id: 'a12', name: 'Mystic Seer', imageUrl: '/src/assets/azure-avatar.png', creator: 'EnchantedArts', likes: 861, views: 2265, comments: 152, hair: 'h5', eyes: 'e3', mouth: 'm5', skin: 's4' },
 ];
 
 const Explore = () => {

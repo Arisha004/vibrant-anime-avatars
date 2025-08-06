@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { Link } from 'react-router-dom';
+import AvatarRenderer from '@/components/AvatarRenderer';
 
 // Import avatar images
 import crystalAvatar from '@/assets/crystal-avatar.png';
@@ -20,7 +21,7 @@ import azureAvatar from '@/assets/azure-avatar.png';
 import neonAvatar from '@/assets/neon-avatar.png';
 import fallbackAvatar from '@/assets/fallback-avatar.png';
 
-// Avatar data with local images
+// Avatar data with local images and avatar parts
 const avatarData = {
   'a1': {
     id: 'a1',
@@ -32,6 +33,10 @@ const avatarData = {
     created: '2024-03-18T14:30:00Z',
     likes: 245,
     views: 1023,
+    hair: 'h2',
+    eyes: 'e1',
+    mouth: 'm1', 
+    skin: 's1',
     comments: [
       {
         id: 'c1',
@@ -70,6 +75,10 @@ const avatarData = {
     created: '2024-03-15T10:20:00Z',
     likes: 189,
     views: 876,
+    hair: 'h4',
+    eyes: 'e3',
+    mouth: 'm1',
+    skin: 's2',
     comments: [
       {
         id: 'c1',
@@ -100,6 +109,10 @@ const avatarData = {
     created: '2024-03-12T08:15:00Z',
     likes: 298,
     views: 1156,
+    hair: 'h1',
+    eyes: 'e2',
+    mouth: 'm3',
+    skin: 's1',
     comments: [],
     tags: ['royal', 'elegant', 'blue', 'princess', 'celestial'],
   },
@@ -113,6 +126,10 @@ const avatarData = {
     created: '2024-03-10T19:45:00Z',
     likes: 412,
     views: 1834,
+    hair: 'h3',
+    eyes: 'e5',
+    mouth: 'm2',
+    skin: 's3',
     comments: [],
     tags: ['cyberpunk', 'neon', 'priestess', 'technology', 'spiritual'],
   }
@@ -259,17 +276,29 @@ const AvatarDetail = () => {
       </Link>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="glass-panel rounded-xl p-4 overflow-hidden">
-          <div className="relative aspect-square bg-gradient-to-br from-anime-purple/20 to-anime-magenta/20 rounded-lg overflow-hidden flex items-center justify-center">
-            <img 
-              src={avatar.imageUrl} 
-              alt={avatar.name}
-              className="w-full h-full object-cover filter contrast-105 saturate-105"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = fallbackAvatar;
-              }}
-            />
+        <div className="glass-panel rounded-xl p-8 overflow-hidden">
+          <div className="relative aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg overflow-hidden flex items-center justify-center">
+            {avatar.hair && avatar.eyes && avatar.mouth && avatar.skin ? (
+              <AvatarRenderer
+                hair={avatar.hair}
+                eyes={avatar.eyes}
+                mouth={avatar.mouth}
+                skin={avatar.skin}
+                size="xl"
+                name={avatar.name}
+                className="w-full h-full shadow-2xl"
+              />
+            ) : (
+              <img 
+                src={avatar.imageUrl} 
+                alt={avatar.name}
+                className="w-full h-full object-cover filter contrast-105 saturate-105"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = fallbackAvatar;
+                }}
+              />
+            )}
           </div>
         </div>
         

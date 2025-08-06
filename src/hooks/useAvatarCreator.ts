@@ -127,31 +127,61 @@ export const useAvatarCreator = () => {
   };
 
   const downloadAvatar = (avatar: CreatedAvatar) => {
-    // Create a simple avatar representation as data URL
+    // Create avatar representation as data URL with actual avatar parts
     const canvas = document.createElement('canvas');
     canvas.width = 400;
     canvas.height = 400;
     const ctx = canvas.getContext('2d');
     
     if (ctx) {
-      // Simple avatar generation (this would be more complex in a real app)
       const selectedSkinTone = skinTones.find(s => s.id === avatar.skin);
+      const selectedHair = hairStyles.find(h => h.id === avatar.hair);
+      const selectedEyes = eyeStyles.find(e => e.id === avatar.eyes);
+      const selectedMouth = mouthStyles.find(m => m.id === avatar.mouth);
       
-      // Background
-      ctx.fillStyle = '#f8f9fa';
+      // Background gradient
+      const gradient = ctx.createRadialGradient(200, 200, 0, 200, 200, 200);
+      gradient.addColorStop(0, '#f8f9fa');
+      gradient.addColorStop(1, '#e9ecef');
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, 400, 400);
       
-      // Face (simple circle)
+      // Face (base skin tone)
       ctx.fillStyle = selectedSkinTone?.color || '#FFDBAC';
       ctx.beginPath();
-      ctx.arc(200, 200, 150, 0, 2 * Math.PI);
+      ctx.arc(200, 200, 160, 0, 2 * Math.PI);
       ctx.fill();
       
-      // Add avatar name
-      ctx.fillStyle = '#333333';
-      ctx.font = '24px Arial';
+      // Add border to face
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+      
+      // Avatar details text
+      ctx.fillStyle = '#2d3748';
+      ctx.font = 'bold 28px Arial';
       ctx.textAlign = 'center';
-      ctx.fillText(avatar.name, 200, 380);
+      ctx.fillText(avatar.name, 200, 50);
+      
+      // Avatar features text
+      ctx.font = '16px Arial';
+      ctx.fillStyle = '#4a5568';
+      const features = [
+        `Hair: ${selectedHair?.name || 'Default'}`,
+        `Eyes: ${selectedEyes?.name || 'Default'}`,
+        `Mouth: ${selectedMouth?.name || 'Default'}`,
+        `Skin: ${selectedSkinTone?.name || 'Default'}`
+      ];
+      
+      features.forEach((feature, index) => {
+        ctx.fillText(feature, 200, 380 + (index * 20));
+      });
+      
+      // Add avatar initial in center
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 72px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(avatar.name.charAt(0).toUpperCase(), 200, 220);
       
       // Convert to blob and download
       canvas.toBlob((blob) => {

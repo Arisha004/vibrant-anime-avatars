@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { hairStyles, eyeStyles, mouthStyles, skinTones } from '@/assets/avatarParts';
 import { useAvatarCreator, CreatedAvatar } from '@/hooks/useAvatarCreator';
 import AvatarPartSelector from './AvatarPartSelector';
+import AvatarRenderer from './AvatarRenderer';
 import { 
   Download, Share2, RefreshCw, Save, Trash2, 
   Loader2, Sparkles, Heart, Eye, Calendar 
@@ -133,22 +134,29 @@ const AvatarCreator = () => {
               <CardTitle className="text-center">Avatar Preview</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="relative mx-auto w-48 h-48 rounded-full bg-gradient-to-br from-anime-purple/20 to-anime-magenta/20 flex items-center justify-center overflow-hidden">
-                <div 
-                  className="w-40 h-40 rounded-full flex items-center justify-center text-4xl font-bold text-white"
-                  style={{ backgroundColor: getSelectedSkinTone()?.color || '#FFDBAC' }}
-                >
-                  {avatarName.charAt(0).toUpperCase() || '?'}
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-full" />
-              </div>
-              <div className="mt-4 text-center">
-                <Input
-                  placeholder="Enter avatar name"
-                  value={avatarName}
-                  onChange={(e) => setAvatarName(e.target.value)}
-                  className="max-w-xs mx-auto text-center"
+              <div className="flex flex-col items-center space-y-4">
+                <AvatarRenderer
+                  hair={selectedHair}
+                  eyes={selectedEyes}
+                  mouth={selectedMouth}
+                  skin={selectedSkin}
+                  size="xl"
+                  name={avatarName}
+                  className="shadow-2xl border-4 border-white/30"
                 />
+                <div className="text-center space-y-2">
+                  <Input
+                    placeholder="Enter avatar name"
+                    value={avatarName}
+                    onChange={(e) => setAvatarName(e.target.value)}
+                    className="max-w-xs mx-auto text-center"
+                  />
+                  <div className="text-sm text-muted-foreground">
+                    <p>Hair: {hairStyles.find(h => h.id === selectedHair)?.name}</p>
+                    <p>Eyes: {eyeStyles.find(e => e.id === selectedEyes)?.name}</p>
+                    <p>Mouth: {mouthStyles.find(m => m.id === selectedMouth)?.name}</p>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -285,16 +293,17 @@ const AvatarCreator = () => {
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      {/* Avatar Preview */}
-                      <div className="relative mx-auto w-24 h-24 rounded-full bg-gradient-to-br from-anime-purple/20 to-anime-magenta/20 flex items-center justify-center overflow-hidden">
-                        <div 
-                          className="w-20 h-20 rounded-full flex items-center justify-center text-xl font-bold text-white"
-                          style={{ 
-                            backgroundColor: skinTones.find(s => s.id === avatar.skin)?.color || '#FFDBAC' 
-                          }}
-                        >
-                          {avatar.name.charAt(0).toUpperCase()}
-                        </div>
+                     {/* Avatar Preview */}
+                      <div className="flex justify-center">
+                        <AvatarRenderer
+                          hair={avatar.hair}
+                          eyes={avatar.eyes}
+                          mouth={avatar.mouth}
+                          skin={avatar.skin}
+                          size="lg"
+                          name={avatar.name}
+                          className="shadow-lg border-2 border-white/20"
+                        />
                       </div>
 
                       {/* Avatar Details */}
