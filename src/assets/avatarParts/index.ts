@@ -1,30 +1,42 @@
 
+// Import avatar part images
+import hairSpiky from '@/assets/hair-spiky.png';
+import hairLong from '@/assets/hair-long.png';
+import hairShort from '@/assets/hair-short.png';
+import hairTwintails from '@/assets/hair-twintails.png';
+import hairPunk from '@/assets/hair-punk.png';
+import eyesRound from '@/assets/eyes-round.png';
+import eyesCat from '@/assets/eyes-cat.png';
+import eyesGentle from '@/assets/eyes-gentle.png';
+import mouthSmile from '@/assets/mouth-smile.png';
+import mouthConfident from '@/assets/mouth-confident.png';
+
 // Hair Styles
 export const hairStyles = [
   {
     id: 'h1',
     name: 'Spiky Anime',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: hairSpiky
   },
   {
     id: 'h2',
     name: 'Long Flowing',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: hairLong
   },
   {
     id: 'h3',
     name: 'Short Messy',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: hairShort
   },
   {
     id: 'h4',
     name: 'Twin Tails',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: hairTwintails
   },
   {
     id: 'h5',
     name: 'Punk Style',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: hairPunk
   }
 ];
 
@@ -33,27 +45,27 @@ export const eyeStyles = [
   {
     id: 'e1',
     name: 'Bright Round',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: eyesRound
   },
   {
     id: 'e2',
     name: 'Sharp Cat',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: eyesCat
   },
   {
     id: 'e3',
     name: 'Gentle',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: eyesGentle
   },
   {
     id: 'e4',
     name: 'Determined',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: eyesRound // Reusing round for now
   },
   {
     id: 'e5',
     name: 'Mysterious',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: eyesCat // Reusing cat for now
   }
 ];
 
@@ -62,27 +74,27 @@ export const mouthStyles = [
   {
     id: 'm1',
     name: 'Sweet Smile',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: mouthSmile
   },
   {
     id: 'm2',
     name: 'Confident',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: mouthConfident
   },
   {
     id: 'm3',
     name: 'Cheerful',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: mouthSmile // Reusing smile for now
   },
   {
     id: 'm4',
     name: 'Pouty',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: mouthConfident // Reusing confident for now
   },
   {
     id: 'm5',
     name: 'Playful',
-    imageUrl: '/lovable-uploads/d9883366-3da4-468a-8b20-63ecd0106eea.png'
+    imageUrl: mouthSmile // Reusing smile for now
   }
 ];
 

@@ -161,8 +161,21 @@ const AvatarDetail = () => {
     }
   };
   
+  const [comments, setComments] = useState(avatar.comments);
+
   const handleComment = () => {
     if (commentInput.trim() === '') return;
+    
+    const newComment = {
+      id: `c${Date.now()}`,
+      user: 'You',
+      userAvatar: fallbackAvatar,
+      content: commentInput.trim(),
+      timestamp: new Date().toISOString(),
+      likes: 0,
+    };
+    
+    setComments(prev => [newComment, ...prev]);
     
     toast({
       title: "Comment Added",
@@ -351,7 +364,7 @@ const AvatarDetail = () => {
             
             <div className="flex items-center text-muted-foreground">
               <MessageCircle className="h-4 w-4 mr-1" />
-              <span>{avatar.comments.length} Comments</span>
+              <span>{comments.length} Comments</span>
             </div>
           </div>
           
@@ -376,7 +389,24 @@ const AvatarDetail = () => {
           </div>
           
           <div className="pt-4">
-            <Button className="bg-gradient-to-r from-anime-purple to-anime-magenta hover:from-anime-purple/90 hover:to-anime-magenta/90 text-white w-full">
+            <Button 
+              className="bg-gradient-to-r from-anime-purple to-anime-magenta hover:from-anime-purple/90 hover:to-anime-magenta/90 text-white w-full"
+              onClick={() => {
+                // Store selected avatar in localStorage for user to use
+                const avatarToUse = {
+                  hair: avatar.hair,
+                  eyes: avatar.eyes,
+                  mouth: avatar.mouth,
+                  skin: avatar.skin,
+                  name: avatar.name
+                };
+                localStorage.setItem('selectedAvatar', JSON.stringify(avatarToUse));
+                toast({
+                  title: "Avatar Selected!",
+                  description: `You are now using "${avatar.name}" as your avatar.`,
+                });
+              }}
+            >
               Use This Avatar
             </Button>
             
@@ -400,7 +430,7 @@ const AvatarDetail = () => {
       <div className="glass-panel rounded-xl p-6">
         <Tabs defaultValue="comments">
           <TabsList className="mb-6">
-            <TabsTrigger value="comments">Comments ({avatar.comments.length})</TabsTrigger>
+            <TabsTrigger value="comments">Comments ({comments.length})</TabsTrigger>
             <TabsTrigger value="related">Related Avatars</TabsTrigger>
           </TabsList>
           
@@ -428,7 +458,7 @@ const AvatarDetail = () => {
             <Separator />
             
             <div className="space-y-6">
-              {avatar.comments.map((comment) => (
+              {comments.map((comment) => (
                 <div key={comment.id} className="flex gap-4">
                   <Avatar className="h-10 w-10">
                     <AvatarImage src={comment.userAvatar} />
