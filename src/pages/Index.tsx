@@ -167,12 +167,19 @@ const Index = () => {
             <p className="text-muted-foreground mt-1">Discover the most popular anime avatars</p>
           </div>
           
-          <Button asChild variant="outline" className="mt-4 md:mt-0">
-            <Link to="/explore">
-              View All Avatars
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+                <div className="flex gap-2">
+                  <Button asChild variant="outline" className="mt-4 md:mt-0">
+                    <Link to="/explore">
+                      View All Avatars
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild className="mt-4 md:mt-0 bg-gradient-to-r from-anime-purple to-anime-magenta">
+                    <Link to="/features">
+                      Explore Features
+                    </Link>
+                  </Button>
+                </div>
         </div>
         
         <Tabs defaultValue="featured" className="w-full">

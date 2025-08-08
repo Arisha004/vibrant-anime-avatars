@@ -68,6 +68,28 @@ export const useAvatarCreator = () => {
       // Add to saved avatars
       setSavedAvatars(prev => [newAvatar, ...prev]);
       
+      // Trigger achievements
+      const achievements = JSON.parse(localStorage.getItem('avatar-achievements') || '[]');
+      if (achievements.length === 0) {
+        // Initialize achievements if none exist
+        const defaultAchievements = [
+          { id: 'first_avatar', title: 'First Creation', description: 'Create your first avatar', icon: '🎨', unlocked: false, progress: 0, maxProgress: 1, reward: { type: 'accessory', itemId: 'crown' } },
+          { id: 'avatar_master', title: 'Avatar Master', description: 'Create 10 different avatars', icon: '👑', unlocked: false, progress: 0, maxProgress: 10, reward: { type: 'part', itemId: 'legendary_hair' } },
+        ];
+        localStorage.setItem('avatar-achievements', JSON.stringify(defaultAchievements));
+      } else {
+        const updatedAchievements = achievements.map((achievement: any) => {
+          if (achievement.id === 'first_avatar' && !achievement.unlocked) {
+            return { ...achievement, progress: 1, unlocked: true };
+          }
+          if (achievement.id === 'avatar_master' && !achievement.unlocked) {
+            return { ...achievement, progress: Math.min(achievement.progress + 1, achievement.maxProgress), unlocked: achievement.progress + 1 >= achievement.maxProgress };
+          }
+          return achievement;
+        });
+        localStorage.setItem('avatar-achievements', JSON.stringify(updatedAchievements));
+      }
+      
       return newAvatar;
     } finally {
       setIsCreating(false);

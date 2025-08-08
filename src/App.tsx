@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import Explore from "./pages/Explore";
 import Create from "./pages/Create";
 import Chat from "./pages/Chat";
+import Features from "./pages/Features";
 import AvatarDetail from "./pages/AvatarDetail";
 import NotFound from "./pages/NotFound";
 
@@ -32,6 +33,7 @@ const App = () => {
                   <Route path="explore" element={<Explore />} />
                   <Route path="create" element={<Create />} />
                   <Route path="chat" element={<Chat />} />
+                  <Route path="features" element={<Features />} />
                   <Route path="avatar/:id" element={<AvatarDetail />} />
                   <Route path="*" element={<NotFound />} />
                 </Route>

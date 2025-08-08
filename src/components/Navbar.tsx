@@ -36,6 +36,9 @@ const Navbar = () => {
             <Link to="/create" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-muted/50 transition-colors">
               Create
             </Link>
+            <Link to="/features" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-muted/50 transition-colors">
+              Features
+            </Link>
             <Link to="/chat" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-muted/50 transition-colors">
               Chat
             </Link>

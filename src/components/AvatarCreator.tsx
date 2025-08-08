@@ -174,7 +174,15 @@ const AvatarCreator = () => {
                 label="Hair Style"
                 options={hairStyles}
                 selectedId={selectedHair}
-                onSelect={setSelectedHair}
+                onSelect={(id) => {
+                  setSelectedHair(id);
+                  // Track style usage for achievements
+                  const usedStyles = JSON.parse(localStorage.getItem('used-styles') || '[]');
+                  if (!usedStyles.includes(id)) {
+                    usedStyles.push(id);
+                    localStorage.setItem('used-styles', JSON.stringify(usedStyles));
+                  }
+                }}
               />
               
               <AvatarPartSelector
