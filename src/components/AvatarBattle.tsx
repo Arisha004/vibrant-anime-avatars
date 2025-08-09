@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -17,6 +18,7 @@ import {
 import { toast } from '@/components/ui/use-toast';
 
 const AvatarBattle = () => {
+  const navigate = useNavigate();
   const { savedAvatars } = useAvatarCreator();
   const { battles, isLoading, startBattle, generateRandomStats, generatePersonality } = useAvatarBattle();
   const { checkBattleWin } = useAvatarAchievements();
@@ -191,7 +193,7 @@ const AvatarBattle = () => {
                 <p className="text-muted-foreground mb-4">
                   Create at least 2 avatars to start battling!
                 </p>
-                <Button variant="outline">Create Avatar</Button>
+                <Button variant="outline" onClick={() => navigate('/create')}>Create Avatar</Button>
               </CardContent>
             </Card>
           ) : (
