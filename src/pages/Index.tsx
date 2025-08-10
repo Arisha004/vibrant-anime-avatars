@@ -10,18 +10,16 @@ import ChatRoom from '@/components/ChatRoom';
 import StructuredData from '@/components/StructuredData';
 import { ArrowRight, Sparkles, MessageCircle, PlusCircle } from 'lucide-react';
 
-// Import generated avatar images
-import crystalAvatar from '@/assets/crystal-avatar.png';
-import sakuraAvatar from '@/assets/sakura-avatar.png';
-import azureAvatar from '@/assets/azure-avatar.png';
-import neonAvatar from '@/assets/neon-avatar.png';
-import fallbackAvatar from '@/assets/fallback-avatar.png';
+// Avatar data with unique combinations
 
 const featuredAvatars = [
   { 
     id: 'a1', 
     name: 'Crystal Angel', 
-    imageUrl: crystalAvatar, 
+    hair: 'hair-long', 
+    eyes: 'eyes-gentle', 
+    mouth: 'mouth-smile', 
+    skin: '#fdbcb4',
     creator: 'ArtisticDreams', 
     likes: 845, 
     views: 3023, 
@@ -30,7 +28,10 @@ const featuredAvatars = [
   { 
     id: 'a2', 
     name: 'Sakura Spirit', 
-    imageUrl: sakuraAvatar, 
+    hair: 'hair-twintails', 
+    eyes: 'eyes-cat', 
+    mouth: 'mouth-smile', 
+    skin: '#f3e7d1',
     creator: 'AnimeArtist', 
     likes: 789, 
     views: 2876, 
@@ -39,7 +40,10 @@ const featuredAvatars = [
   { 
     id: 'a3', 
     name: 'Azure Princess', 
-    imageUrl: azureAvatar, 
+    hair: 'hair-short', 
+    eyes: 'eyes-round', 
+    mouth: 'mouth-confident', 
+    skin: '#fdbcb4',
     creator: 'DigitalMuse', 
     likes: 763, 
     views: 2445, 
@@ -48,7 +52,10 @@ const featuredAvatars = [
   { 
     id: 'a4', 
     name: 'Neon Priestess', 
-    imageUrl: neonAvatar, 
+    hair: 'hair-punk', 
+    eyes: 'eyes-cat', 
+    mouth: 'mouth-confident', 
+    skin: '#c3956d',
     creator: 'CyberArtist', 
     likes: 917, 
     views: 3934, 
@@ -60,7 +67,10 @@ const trendingAvatars = [
   { 
     id: 'a5', 
     name: 'Snow Queen', 
-    imageUrl: crystalAvatar, 
+    hair: 'hair-long', 
+    eyes: 'eyes-round', 
+    mouth: 'mouth-smile', 
+    skin: '#fef3e2',
     creator: 'WinterDreams', 
     likes: 1312, 
     views: 5547, 
@@ -69,7 +79,10 @@ const trendingAvatars = [
   { 
     id: 'a6', 
     name: 'Cherry Blossom', 
-    imageUrl: sakuraAvatar, 
+    hair: 'hair-twintails', 
+    eyes: 'eyes-gentle', 
+    mouth: 'mouth-confident', 
+    skin: '#f3e7d1',
     creator: 'SakuraArt', 
     likes: 1178, 
     views: 4398, 
@@ -78,7 +91,10 @@ const trendingAvatars = [
   { 
     id: 'a7', 
     name: 'Starlight Mage', 
-    imageUrl: azureAvatar, 
+    hair: 'hair-spiky', 
+    eyes: 'eyes-cat', 
+    mouth: 'mouth-smile', 
+    skin: '#c3956d',
     creator: 'GalacticDreams', 
     likes: 1056, 
     views: 4124, 
@@ -87,7 +103,10 @@ const trendingAvatars = [
   { 
     id: 'a8', 
     name: 'Moon Guardian', 
-    imageUrl: neonAvatar, 
+    hair: 'hair-short', 
+    eyes: 'eyes-round', 
+    mouth: 'mouth-confident', 
+    skin: '#8b6f47',
     creator: 'LunarArtist', 
     likes: 983, 
     views: 3267, 

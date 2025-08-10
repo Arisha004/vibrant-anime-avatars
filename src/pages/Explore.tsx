@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -9,20 +9,20 @@ import { Label } from '@/components/ui/label';
 import { Search, Filter, ArrowUpDown } from 'lucide-react';
 import AvatarCard from '@/components/AvatarCard';
 
-// Sample diverse avatar data with different combinations
+// Sample diverse avatar data with unique combinations - each avatar will have its own unique generated image
 const allAvatars = [
-  { id: 'a1', name: 'Crystal Angel', imageUrl: '/src/assets/crystal-avatar.png', creator: 'ArtisticDreams', likes: 845, views: 3023, comments: 148, hair: 'h2', eyes: 'e1', mouth: 'm1', skin: 's1' },
-  { id: 'a2', name: 'Sakura Spirit', imageUrl: '/src/assets/sakura-avatar.png', creator: 'AnimeArtist', likes: 789, views: 2876, comments: 132, hair: 'h4', eyes: 'e3', mouth: 'm1', skin: 's2' },
-  { id: 'a3', name: 'Azure Princess', imageUrl: '/src/assets/azure-avatar.png', creator: 'DigitalMuse', likes: 763, views: 2445, comments: 127, hair: 'h1', eyes: 'e2', mouth: 'm3', skin: 's1' },
-  { id: 'a4', name: 'Neon Priestess', imageUrl: '/src/assets/neon-avatar.png', creator: 'CyberArtist', likes: 917, views: 3934, comments: 241, hair: 'h3', eyes: 'e5', mouth: 'm2', skin: 's3' },
-  { id: 'a5', name: 'Snow Queen', imageUrl: '/src/assets/fallback-avatar.png', creator: 'WinterDreams', likes: 1312, views: 5547, comments: 263, hair: 'h2', eyes: 'e1', mouth: 'm1', skin: 's1' },
-  { id: 'a6', name: 'Cherry Blossom', imageUrl: '/src/assets/sakura-avatar.png', creator: 'SakuraArt', likes: 1178, views: 4398, comments: 251, hair: 'h4', eyes: 'e3', mouth: 'm5', skin: 's2' },
-  { id: 'a7', name: 'Starlight Mage', imageUrl: '/src/assets/crystal-avatar.png', creator: 'GalacticDreams', likes: 1056, views: 4124, comments: 246, hair: 'h1', eyes: 'e4', mouth: 'm2', skin: 's3' },
-  { id: 'a8', name: 'Moon Guardian', imageUrl: '/src/assets/azure-avatar.png', creator: 'LunarArtist', likes: 983, views: 3267, comments: 158, hair: 'h5', eyes: 'e2', mouth: 'm4', skin: 's4' },
-  { id: 'a9', name: 'Celestial Maiden', imageUrl: '/src/assets/neon-avatar.png', creator: 'StardustArt', likes: 892, views: 2952, comments: 137, hair: 'h2', eyes: 'e5', mouth: 'm1', skin: 's5' },
-  { id: 'a10', name: 'Solar Knight', imageUrl: '/src/assets/fallback-avatar.png', creator: 'SunlightStudio', likes: 927, views: 3089, comments: 143, hair: 'h3', eyes: 'e4', mouth: 'm3', skin: 's6' },
-  { id: 'a11', name: 'Aurora Weaver', imageUrl: '/src/assets/crystal-avatar.png', creator: 'NorthernLights', likes: 842, views: 2178, comments: 149, hair: 'h4', eyes: 'e1', mouth: 'm2', skin: 's2' },
-  { id: 'a12', name: 'Mystic Seer', imageUrl: '/src/assets/azure-avatar.png', creator: 'EnchantedArts', likes: 861, views: 2265, comments: 152, hair: 'h5', eyes: 'e3', mouth: 'm5', skin: 's4' },
+  { id: 'a1', name: 'Crystal Angel', creator: 'ArtisticDreams', likes: 845, views: 3023, comments: 148, hair: 'hair-long', eyes: 'eyes-gentle', mouth: 'mouth-smile', skin: '#fdbcb4' },
+  { id: 'a2', name: 'Sakura Spirit', creator: 'AnimeArtist', likes: 789, views: 2876, comments: 132, hair: 'hair-twintails', eyes: 'eyes-cat', mouth: 'mouth-smile', skin: '#f3e7d1' },
+  { id: 'a3', name: 'Azure Princess', creator: 'DigitalMuse', likes: 763, views: 2445, comments: 127, hair: 'hair-short', eyes: 'eyes-round', mouth: 'mouth-confident', skin: '#fdbcb4' },
+  { id: 'a4', name: 'Neon Priestess', creator: 'CyberArtist', likes: 917, views: 3934, comments: 241, hair: 'hair-punk', eyes: 'eyes-cat', mouth: 'mouth-confident', skin: '#c3956d' },
+  { id: 'a5', name: 'Snow Queen', creator: 'WinterDreams', likes: 1312, views: 5547, comments: 263, hair: 'hair-long', eyes: 'eyes-round', mouth: 'mouth-smile', skin: '#fef3e2' },
+  { id: 'a6', name: 'Cherry Blossom', creator: 'SakuraArt', likes: 1178, views: 4398, comments: 251, hair: 'hair-twintails', eyes: 'eyes-gentle', mouth: 'mouth-confident', skin: '#f3e7d1' },
+  { id: 'a7', name: 'Starlight Mage', creator: 'GalacticDreams', likes: 1056, views: 4124, comments: 246, hair: 'hair-spiky', eyes: 'eyes-cat', mouth: 'mouth-smile', skin: '#c3956d' },
+  { id: 'a8', name: 'Moon Guardian', creator: 'LunarArtist', likes: 983, views: 3267, comments: 158, hair: 'hair-short', eyes: 'eyes-round', mouth: 'mouth-confident', skin: '#8b6f47' },
+  { id: 'a9', name: 'Celestial Maiden', creator: 'StardustArt', likes: 892, views: 2952, comments: 137, hair: 'hair-long', eyes: 'eyes-gentle', mouth: 'mouth-smile', skin: '#f7d794' },
+  { id: 'a10', name: 'Solar Knight', creator: 'SunlightStudio', likes: 927, views: 3089, comments: 143, hair: 'hair-punk', eyes: 'eyes-cat', mouth: 'mouth-confident', skin: '#d4a574' },
+  { id: 'a11', name: 'Aurora Weaver', creator: 'NorthernLights', likes: 842, views: 2178, comments: 149, hair: 'hair-twintails', eyes: 'eyes-round', mouth: 'mouth-smile', skin: '#f3e7d1' },
+  { id: 'a12', name: 'Mystic Seer', creator: 'EnchantedArts', likes: 861, views: 2265, comments: 152, hair: 'hair-spiky', eyes: 'eyes-gentle', mouth: 'mouth-confident', skin: '#8b6f47' },
 ];
 
 const Explore = () => {
@@ -30,9 +30,33 @@ const Explore = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [sortBy, setSortBy] = useState('popularity');
   
+  // Filter and sort avatars based on search query and sort option
+  const filteredAndSortedAvatars = useMemo(() => {
+    let filtered = allAvatars.filter(avatar =>
+      avatar.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      avatar.creator.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    // Sort the filtered results
+    switch (sortBy) {
+      case 'popularity':
+        return filtered.sort((a, b) => b.likes - a.likes);
+      case 'newest':
+        return filtered.sort((a, b) => b.views - a.views); // Using views as a proxy for recency
+      case 'oldest':
+        return filtered.sort((a, b) => a.views - b.views);
+      case 'a-z':
+        return filtered.sort((a, b) => a.name.localeCompare(b.name));
+      case 'z-a':
+        return filtered.sort((a, b) => b.name.localeCompare(a.name));
+      default:
+        return filtered;
+    }
+  }, [searchQuery, sortBy]);
+  
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
+    // Search is handled by the useMemo hook above
   };
   
   return (
@@ -137,34 +161,54 @@ const Explore = () => {
         
         <TabsContent value="all" className="pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {allAvatars.map((avatar) => (
+            {filteredAndSortedAvatars.map((avatar) => (
               <AvatarCard key={avatar.id} {...avatar} />
             ))}
           </div>
+          {filteredAndSortedAvatars.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No avatars found matching your search criteria.</p>
+            </div>
+          )}
         </TabsContent>
         
         <TabsContent value="featured" className="pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {allAvatars.slice(0, 8).map((avatar) => (
+            {filteredAndSortedAvatars.slice(0, 8).map((avatar) => (
               <AvatarCard key={avatar.id} {...avatar} />
             ))}
           </div>
+          {filteredAndSortedAvatars.slice(0, 8).length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No featured avatars found matching your search criteria.</p>
+            </div>
+          )}
         </TabsContent>
         
         <TabsContent value="trending" className="pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {allAvatars.slice(4, 12).map((avatar) => (
+            {filteredAndSortedAvatars.slice(4, 12).map((avatar) => (
               <AvatarCard key={avatar.id} {...avatar} />
             ))}
           </div>
+          {filteredAndSortedAvatars.slice(4, 12).length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No trending avatars found matching your search criteria.</p>
+            </div>
+          )}
         </TabsContent>
         
         <TabsContent value="new" className="pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {allAvatars.slice(8, 12).concat(allAvatars.slice(0, 4)).map((avatar) => (
+            {filteredAndSortedAvatars.slice(8, 12).concat(filteredAndSortedAvatars.slice(0, 4)).map((avatar) => (
               <AvatarCard key={avatar.id} {...avatar} />
             ))}
           </div>
+          {filteredAndSortedAvatars.slice(8, 12).concat(filteredAndSortedAvatars.slice(0, 4)).length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No new avatars found matching your search criteria.</p>
+            </div>
+          )}
         </TabsContent>
       </Tabs>
       
