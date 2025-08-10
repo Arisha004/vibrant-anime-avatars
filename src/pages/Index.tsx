@@ -99,7 +99,7 @@ const Index = () => {
   return (
     <>
       <StructuredData />
-      <div className="space-y-12 pb-12">
+      <div className="space-y-0">
       {/* Hero section */}
       <section className="bg-gradient-to-r from-anime-purple to-anime-magenta py-12 sm:py-24 px-4 sm:px-6 relative overflow-hidden">
         <div className="container relative">
@@ -160,7 +160,7 @@ const Index = () => {
       </section>
       
       {/* Avatars Gallery */}
-      <section className="container px-4 sm:px-6">
+      <section className="container px-4 sm:px-6 py-16">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold">Trending Avatars</h2>
@@ -216,7 +216,7 @@ const Index = () => {
       </section>
       
       {/* Avatar Creator Preview */}
-      <section className="bg-gradient-to-br from-white via-purple-50 to-blue-50 py-16">
+      <section className="bg-gradient-to-br from-white via-purple-50 to-blue-50 py-16 mt-8">
         <div className="container">
           <div className="flex flex-col lg:flex-row items-start gap-12">
             <div className="lg:w-1/3 space-y-6">
@@ -255,7 +255,7 @@ const Index = () => {
       </section>
       
       {/* Chat Preview */}
-      <section className="container">
+      <section className="container py-16">
         <div className="mb-8">
           <div className="space-y-2">
             <div className="inline-block rounded-full bg-anime-purple/10 px-3 py-1 text-sm font-medium text-anime-purple">
@@ -283,7 +283,7 @@ const Index = () => {
       </section>
       
       {/* Features section */}
-      <section className="bg-gradient-to-br from-white via-purple-50 to-blue-50 py-12 sm:py-16">
+      <section className="bg-gradient-to-br from-white via-purple-50 to-blue-50 py-12 sm:py-16 mt-8">
         <div className="container px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="inline-block rounded-full bg-anime-purple/10 px-3 py-1 text-sm font-medium text-anime-purple mb-4">
@@ -341,7 +341,7 @@ const Index = () => {
       </section>
       
       {/* CTA section */}
-      <section className="container px-4 sm:px-6">
+      <section className="container px-4 sm:px-6 py-16">
         <div className="rounded-2xl bg-gradient-to-r from-anime-purple to-anime-magenta p-8 md:p-12 text-white">
           <div className="max-w-2xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-bold">Ready to Express Yourself?</h2>
