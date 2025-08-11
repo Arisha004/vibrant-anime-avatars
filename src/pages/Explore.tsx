@@ -7,22 +7,36 @@ import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Search, Filter, ArrowUpDown } from 'lucide-react';
-import AvatarCard from '@/components/AvatarCard';
+import ImageAvatarCard from '@/components/ImageAvatarCard';
 
-// Sample diverse avatar data with unique combinations - each avatar will have its own unique generated image
+// Import all avatar images
+import crystalAngelImg from '@/assets/explore-avatars/crystal-angel.jpg';
+import sakuraSpiritImg from '@/assets/explore-avatars/sakura-spirit.jpg';
+import azurePrincessImg from '@/assets/explore-avatars/azure-princess.jpg';
+import neonPriestessImg from '@/assets/explore-avatars/neon-priestess.jpg';
+import snowQueenImg from '@/assets/explore-avatars/snow-queen.jpg';
+import cherryBlossomImg from '@/assets/explore-avatars/cherry-blossom.jpg';
+import starlightMageImg from '@/assets/explore-avatars/starlight-mage.jpg';
+import moonGuardianImg from '@/assets/explore-avatars/moon-guardian.jpg';
+import celestialMaidenImg from '@/assets/explore-avatars/celestial-maiden.jpg';
+import solarKnightImg from '@/assets/explore-avatars/solar-knight.jpg';
+import auroraWeaverImg from '@/assets/explore-avatars/aurora-weaver.jpg';
+import mysticSeerImg from '@/assets/explore-avatars/mystic-seer.jpg';
+
+// Real anime avatar data with unique generated images
 const allAvatars = [
-  { id: 'a1', name: 'Crystal Angel', creator: 'ArtisticDreams', likes: 845, views: 3023, comments: 148, hair: 'hair-long', eyes: 'eyes-gentle', mouth: 'mouth-smile', skin: '#fdbcb4' },
-  { id: 'a2', name: 'Sakura Spirit', creator: 'AnimeArtist', likes: 789, views: 2876, comments: 132, hair: 'hair-twintails', eyes: 'eyes-cat', mouth: 'mouth-smile', skin: '#f3e7d1' },
-  { id: 'a3', name: 'Azure Princess', creator: 'DigitalMuse', likes: 763, views: 2445, comments: 127, hair: 'hair-short', eyes: 'eyes-round', mouth: 'mouth-confident', skin: '#fdbcb4' },
-  { id: 'a4', name: 'Neon Priestess', creator: 'CyberArtist', likes: 917, views: 3934, comments: 241, hair: 'hair-punk', eyes: 'eyes-cat', mouth: 'mouth-confident', skin: '#c3956d' },
-  { id: 'a5', name: 'Snow Queen', creator: 'WinterDreams', likes: 1312, views: 5547, comments: 263, hair: 'hair-long', eyes: 'eyes-round', mouth: 'mouth-smile', skin: '#fef3e2' },
-  { id: 'a6', name: 'Cherry Blossom', creator: 'SakuraArt', likes: 1178, views: 4398, comments: 251, hair: 'hair-twintails', eyes: 'eyes-gentle', mouth: 'mouth-confident', skin: '#f3e7d1' },
-  { id: 'a7', name: 'Starlight Mage', creator: 'GalacticDreams', likes: 1056, views: 4124, comments: 246, hair: 'hair-spiky', eyes: 'eyes-cat', mouth: 'mouth-smile', skin: '#c3956d' },
-  { id: 'a8', name: 'Moon Guardian', creator: 'LunarArtist', likes: 983, views: 3267, comments: 158, hair: 'hair-short', eyes: 'eyes-round', mouth: 'mouth-confident', skin: '#8b6f47' },
-  { id: 'a9', name: 'Celestial Maiden', creator: 'StardustArt', likes: 892, views: 2952, comments: 137, hair: 'hair-long', eyes: 'eyes-gentle', mouth: 'mouth-smile', skin: '#f7d794' },
-  { id: 'a10', name: 'Solar Knight', creator: 'SunlightStudio', likes: 927, views: 3089, comments: 143, hair: 'hair-punk', eyes: 'eyes-cat', mouth: 'mouth-confident', skin: '#d4a574' },
-  { id: 'a11', name: 'Aurora Weaver', creator: 'NorthernLights', likes: 842, views: 2178, comments: 149, hair: 'hair-twintails', eyes: 'eyes-round', mouth: 'mouth-smile', skin: '#f3e7d1' },
-  { id: 'a12', name: 'Mystic Seer', creator: 'EnchantedArts', likes: 861, views: 2265, comments: 152, hair: 'hair-spiky', eyes: 'eyes-gentle', mouth: 'mouth-confident', skin: '#8b6f47' },
+  { id: 'a1', name: 'Crystal Angel', creator: 'ArtisticDreams', likes: 845, views: 3023, comments: 148, imageUrl: crystalAngelImg },
+  { id: 'a2', name: 'Sakura Spirit', creator: 'AnimeArtist', likes: 789, views: 2876, comments: 132, imageUrl: sakuraSpiritImg },
+  { id: 'a3', name: 'Azure Princess', creator: 'DigitalMuse', likes: 763, views: 2445, comments: 127, imageUrl: azurePrincessImg },
+  { id: 'a4', name: 'Neon Priestess', creator: 'CyberArtist', likes: 917, views: 3934, comments: 241, imageUrl: neonPriestessImg },
+  { id: 'a5', name: 'Snow Queen', creator: 'WinterDreams', likes: 1312, views: 5547, comments: 263, imageUrl: snowQueenImg },
+  { id: 'a6', name: 'Cherry Blossom', creator: 'SakuraArt', likes: 1178, views: 4398, comments: 251, imageUrl: cherryBlossomImg },
+  { id: 'a7', name: 'Starlight Mage', creator: 'GalacticDreams', likes: 1056, views: 4124, comments: 246, imageUrl: starlightMageImg },
+  { id: 'a8', name: 'Moon Guardian', creator: 'LunarArtist', likes: 983, views: 3267, comments: 158, imageUrl: moonGuardianImg },
+  { id: 'a9', name: 'Celestial Maiden', creator: 'StardustArt', likes: 892, views: 2952, comments: 137, imageUrl: celestialMaidenImg },
+  { id: 'a10', name: 'Solar Knight', creator: 'SunlightStudio', likes: 927, views: 3089, comments: 143, imageUrl: solarKnightImg },
+  { id: 'a11', name: 'Aurora Weaver', creator: 'NorthernLights', likes: 842, views: 2178, comments: 149, imageUrl: auroraWeaverImg },
+  { id: 'a12', name: 'Mystic Seer', creator: 'EnchantedArts', likes: 861, views: 2265, comments: 152, imageUrl: mysticSeerImg },
 ];
 
 const Explore = () => {
@@ -162,7 +176,7 @@ const Explore = () => {
         <TabsContent value="all" className="pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredAndSortedAvatars.map((avatar) => (
-              <AvatarCard key={avatar.id} {...avatar} />
+              <ImageAvatarCard key={avatar.id} {...avatar} />
             ))}
           </div>
           {filteredAndSortedAvatars.length === 0 && (
@@ -175,7 +189,7 @@ const Explore = () => {
         <TabsContent value="featured" className="pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredAndSortedAvatars.slice(0, 8).map((avatar) => (
-              <AvatarCard key={avatar.id} {...avatar} />
+              <ImageAvatarCard key={avatar.id} {...avatar} />
             ))}
           </div>
           {filteredAndSortedAvatars.slice(0, 8).length === 0 && (
@@ -188,7 +202,7 @@ const Explore = () => {
         <TabsContent value="trending" className="pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredAndSortedAvatars.slice(4, 12).map((avatar) => (
-              <AvatarCard key={avatar.id} {...avatar} />
+              <ImageAvatarCard key={avatar.id} {...avatar} />
             ))}
           </div>
           {filteredAndSortedAvatars.slice(4, 12).length === 0 && (
@@ -201,7 +215,7 @@ const Explore = () => {
         <TabsContent value="new" className="pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredAndSortedAvatars.slice(8, 12).concat(filteredAndSortedAvatars.slice(0, 4)).map((avatar) => (
-              <AvatarCard key={avatar.id} {...avatar} />
+              <ImageAvatarCard key={avatar.id} {...avatar} />
             ))}
           </div>
           {filteredAndSortedAvatars.slice(8, 12).concat(filteredAndSortedAvatars.slice(0, 4)).length === 0 && (
