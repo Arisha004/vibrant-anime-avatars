@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { hairStyles, eyeStyles, mouthStyles, skinTones } from '@/assets/avatarParts';
 import { useAvatarCreator, CreatedAvatar } from '@/hooks/useAvatarCreator';
 import AvatarPartSelector from './AvatarPartSelector';
-import RealTimeAnimeGenerator from './RealTimeAnimeGenerator';
+import RealAnimeAvatarGenerator from './RealAnimeAvatarGenerator';
 import { 
   Download, Share2, RefreshCw, Save, Trash2, 
   Loader2, Sparkles, Heart, Eye, Calendar 
@@ -138,7 +138,7 @@ const AvatarCreator = () => {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center space-y-4">
-                <RealTimeAnimeGenerator
+                <RealAnimeAvatarGenerator
                   hair={selectedHair}
                   eyes={selectedEyes}
                   mouth={selectedMouth}
@@ -306,7 +306,7 @@ const AvatarCreator = () => {
                     <CardContent className="space-y-4">
                      {/* Avatar Preview */}
                       <div className="flex justify-center">
-                        <RealTimeAnimeGenerator
+                        <RealAnimeAvatarGenerator
                           hair={avatar.hair}
                           eyes={avatar.eyes}
                           mouth={avatar.mouth}
