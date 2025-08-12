@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { hairStyles, eyeStyles, mouthStyles, skinTones } from '@/assets/avatarParts';
 import { useAvatarCreator, CreatedAvatar } from '@/hooks/useAvatarCreator';
 import AvatarPartSelector from './AvatarPartSelector';
-import AvatarRenderer from './AvatarRenderer';
+import RealAnimeAvatarGenerator from './RealAnimeAvatarGenerator';
 import { 
   Download, Share2, RefreshCw, Save, Trash2, 
   Loader2, Sparkles, Heart, Eye, Calendar 
@@ -131,17 +131,20 @@ const AvatarCreator = () => {
           {/* Avatar Preview */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-center">Avatar Preview</CardTitle>
+              <CardTitle className="text-center">Real Anime Avatar Preview</CardTitle>
+              <p className="text-center text-sm text-muted-foreground">
+                Create stunning anime-style avatars with AI
+              </p>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center space-y-4">
-                <AvatarRenderer
+                <RealAnimeAvatarGenerator
                   hair={selectedHair}
                   eyes={selectedEyes}
                   mouth={selectedMouth}
                   skin={selectedSkin}
+                  avatarName={avatarName}
                   size="xl"
-                  name={avatarName}
                   className="shadow-2xl border-4 border-white/30"
                 />
                 <div className="text-center space-y-2">
@@ -303,13 +306,13 @@ const AvatarCreator = () => {
                     <CardContent className="space-y-4">
                      {/* Avatar Preview */}
                       <div className="flex justify-center">
-                        <AvatarRenderer
+                        <RealAnimeAvatarGenerator
                           hair={avatar.hair}
                           eyes={avatar.eyes}
                           mouth={avatar.mouth}
                           skin={avatar.skin}
+                          avatarName={avatar.name}
                           size="lg"
-                          name={avatar.name}
                           className="shadow-lg border-2 border-white/20"
                         />
                       </div>
