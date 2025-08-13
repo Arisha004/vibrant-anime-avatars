@@ -28,8 +28,6 @@ It was initially generated with the help of AI, but I actively solved multiple d
 - **Development Platform**: [Lovable](https://lovable.dev/)
 - **Frontend Framework**: [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Linting**: ESLint
-- **Deployment**: [Netlify](https://www.netlify.com/)
 
 ---
 
