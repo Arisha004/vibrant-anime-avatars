@@ -1,73 +1,110 @@
-# Welcome to your Lovable project
+# AnimeAvatars
 
-## Project info
+![AnimeAvatars Hero](hero-section.png)
 
-**URL**: https://lovable.dev/projects/52e8bddc-2b2f-45b7-b3e1-94f22d9b7406
+**Vibrant Anime Avatars with Real-Time Creation**
 
-## How can I edit this code?
+AnimeAvatars is a web application that lets users express themselves by creating fully customizable anime avatars. With real-time creation tools, an interactive gallery, and community chat features, users can design unique avatars, share them, and connect with others.
 
-There are several ways of editing your application.
+This project was built using **[Lovable](https://lovable.dev/)** — an AI-powered development platform — along with Vite, React, Tailwind CSS, and TypeScript.  
+It was initially generated with the help of AI, but I actively solved multiple development challenges myself, ensuring smooth functionality, bug fixes, and improved user experience.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/52e8bddc-2b2f-45b7-b3e1-94f22d9b7406) and start prompting.
+## ✨ Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Real-Time Avatar Creation** – Customize facial features, hairstyles, colors, and accessories instantly.
+- **Vibrant UI** – Beautiful gradient design powered by Tailwind CSS.
+- **Search & Explore** – Browse through a gallery of user-created avatars.
+- **Community Chat** – Interact with others in a friendly anime-focused space.
+- **Responsive Design** – Works on desktop, tablet, and mobile devices.
+- **Fast & Modern** – Built with Vite and TypeScript for optimal performance.
+- **Lovable + AI Development** – Created with AI assistance, refined with human problem-solving.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠 Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Development Platform**: [Lovable](https://lovable.dev/)
+- **Frontend Framework**: [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Linting**: ESLint
+- **Deployment**: [Netlify](https://www.netlify.com/)
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📦 Installation & Setup
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Clone the repository and install dependencies:
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+git clone https://github.com/your-username/anime-avatars.git
+cd anime-avatars
+npm install
+````
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Run the development server:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build for production:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+Preview the production build:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run preview
+```
 
-## What technologies are used for this project?
+---
 
-This project is built with .
+## 🚀 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is pre-configured for **Netlify** deployment via the `netlify.toml` file.
 
-## How can I deploy this project?
+To deploy:
 
-Simply open [Lovable](https://lovable.dev/projects/52e8bddc-2b2f-45b7-b3e1-94f22d9b7406) and click on Share -> Publish.
+1. Push your code to GitHub.
+2. Link your repository in Netlify.
+3. Deploy — your app will be live within minutes.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 📂 Project Structure
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```
+.
+├── public              # Static assets
+├── src                 # Application source code
+├── components.json     # Reusable UI components
+├── index.html          # Main HTML template
+├── tailwind.config.ts  # Tailwind CSS configuration
+├── vite.config.ts      # Vite configuration
+├── netlify.toml        # Netlify deployment config
+└── package.json        # Project metadata & scripts
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+Please fork the repository and submit a pull request with clear commit messages.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🌐 Live Demo
+
+[Live Preview](https://preview--vibrant-anime-avatars.lovable.app/)
+
